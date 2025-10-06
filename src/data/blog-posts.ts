@@ -1,0 +1,121 @@
+
+import { Lightbulb,Handshake,Factory,Coins,CircleGauge, LucideIcon } from "lucide-react";
+
+export interface BlogPost {
+  title: string;
+  description: string;
+  date: string;
+  author: string;
+  category: string;
+  slug: string;
+  image: string;
+  icon: LucideIcon; // Lucide icon component
+  blogtext: string; // Optional field for additional text
+  markdown: string; // Optional field for markdown content
+}
+
+export const blogPosts: BlogPost[] = [
+{
+    title: "Everything UK Businesses Need to Know About Smart Meters",
+    description: "Smart meters are quickly becoming the standard across the UK, helping households and businesses track their energy usage more accurately.",
+    date: "2025-09-17",
+    author: "Riya Chowdhury",
+    category: "Industry Insights",
+    slug: "Everything-UK-Businesses-Need-to-Know-About-Smart-Meters",
+    image: "/images/blog/smart-meter.jpg",
+    icon: CircleGauge,
+    markdown: "250917-SmartMeter",
+    blogtext: ""
+
+},
+      {
+    title: "When should your business renew its' energy contract?",
+    description: "Renewing your business energy contract might not be at the top of your to do list, but leaving it until the last minute can be an expensive mistake.",
+    date: "2025-09-10",
+    author: "Riya Chowdhury",
+    category: "Energy Prices",
+    slug: "Business-Energy-Contract-Renewal-Uk",
+    image: "/images/blog/business-energy-contract-renewal-uk-sme.jpg",
+    icon: Coins,
+    markdown: "250910-Renewal",
+    blogtext: ""
+
+},
+    {
+    title: "Business Energy Saving Tips: How to Cut Costs This Autumn (2025 Guide)",
+    description: "As the leaves fall and temperatures drop, many businesses notice their energy usage and costs rising. Longer working hours with lights on, heating demands increasing, and greater reliance on equipment all add pressure to your bills.",
+    date: "2025-09-04",
+    author: "Riya Chowdhury",
+    category: "Energy Prices",
+    slug: "Business-Energy-Saving-Tips-How-to-Cut-Costs-This-Autumn",
+    image: "/images/blog/AutumnTrees.png",
+    icon: Coins,
+    markdown: "250904-AutumnEnergyPrices",
+    blogtext: ""
+
+},
+  {
+    title: "Should UK Businesses Lock in Energy Prices for 2025?",
+    description: "If you’ve ever wondered whether it’s smart to fix your energy rates ahead of time, you’re not alone.",
+    date: "2025-07-29",
+    author: "Mike Morris",
+    category: "Energy Prices",
+    slug: "Should-UK-Businesses-Lock-in-Energy-Prices-for-2025",
+    image: "/images/blog/250729-ForwardBuying.png",
+    icon: Coins,
+    markdown: "250729-ForwardBuying",
+    blogtext: ""
+
+},
+
+  {
+    title: "What are Standing Charges on Business Energy Bills? (UK Guide 2025)",
+    description: "Standing charges are a fixed daily cost that energy suppliers charge for providing energy to your business. But why do they matter, and how can you manage them effectively?",
+    date: "2025-07-23",
+    author: "Mike Morris",
+    category: "Energy Prices",
+    slug: "What-Are-Standing-Charges-on-Business-Energy-Bills-UK-Guide-2025",
+    image: "/images/blog/250723-StandingCharges.png",
+    icon: Coins,
+    markdown: "250723-StandingCharges",
+    blogtext: ""
+
+},
+
+{   title: "Hospitality Industry Energy Costs: How UK Restaurants and hotels can Save in 2025",
+    description: "From restaurants and hotels to pubs, cafés, and event venues, the UK’s hospitality sector is under pressure. And one of the biggest challenges? Managing energy costs.",
+    date: "2025-07-14",
+    author: "Mike Morris",
+    category: "Industry Insights",
+    slug: "Hospitality-Industrys-Energy-Costs-How-UK-Restaurants-and-hotels-can-save-in-2025",
+    image: "/images/blog/250714-HospitalityIndustry.png",
+    icon: Factory,
+    markdown: "250714-HospitalityIndustry",
+    blogtext: ""
+
+},
+{   title: "Why UK Energy Supplier Customer Service Has Declined (and How Brokers Help)",
+    description: "Over the past couple of years, UK energy suppliers have faced a perfect storm of challenges — and customer service has taken a hit.",
+    date: "2025-07-07",
+    author: "Mike Morris",
+    category: "Suppliers",
+    slug: "Why-UK-Energy-Supplier-Customer-Service-Has-Declined-and-How-Brokers-Help",
+    image: "/images/blog/250707-SupplierCustomerService.png",
+    icon: Handshake ,
+    markdown: "250707-SupplierCustomerService",
+    blogtext: ""
+
+},
+  {
+    title: "Why Are UK Energy Prices So High In 2025? (Business Energy Explained)",
+    description: "What Your Business Can Do About It. Let’s break it down in plain English — and more importantly, show you how to take back control.",
+    date: "2025-06-30",
+    author: "Mike Morris",
+    category: "Energy Prices",
+    slug: "uk-energy-prices",
+    image: "/images/blog/250630-UkEnergyPrices.png",
+    icon: Lightbulb,
+    markdown: "250630-UkEnergyPrices",
+    blogtext: ""
+  }
+];
