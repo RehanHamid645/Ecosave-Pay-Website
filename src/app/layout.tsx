@@ -7,7 +7,7 @@ import Footer from "@/components/layout/Footer";
 import { Providers } from "./providers";
 import Trustpilot from "@/components/features/Trustpilot";
 import { HeroUIProvider } from "@heroui/react"
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from "@vercel/speed-insights/react"
 import CookieConsent from "@/components/shared/CookieConsent";
 import { Suspense } from 'react'
