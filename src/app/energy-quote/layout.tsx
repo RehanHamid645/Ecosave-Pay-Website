@@ -28,7 +28,6 @@ function getProgressPercentage(pathname: string): number {
 export default function EnergyQuoteLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname()
   const isMainPage = !pathname.includes('/step')
-  const progressPercentage = getProgressPercentage(pathname)
   const steps = ["Energy Type", "Supplier Details", "Contact Details"];
  const activeIndex = getStepNumber(pathname) - 1; // 0-based index
 
