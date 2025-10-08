@@ -15,6 +15,32 @@ export interface BlogPost {
 }
 
 export const blogPosts: BlogPost[] = [
+   {
+    title: "Power Up Your Business Presence: Choosing the Right Social Media Platforms",
+    description: "At Ecosave Gas and Power, we don’t just help businesses save on energy, we empower them to grow. In today’s digital first world, your online presence is just as important as your bottom line.",
+    date: "2025-10-08",
+    author: "Riya Chowdhury",
+    category: "Business Growth",
+    slug: "Choosing-the-Right-Social-Media-Platforms",
+    image:"/images/blog/social-media-icons.jpg",
+    icon:Handshake ,
+    markdown: "251008-SocialMediaPlatforms",
+    blogtext: "",
+    
+  },
+  {
+     title: "How Switching to Green Energy Can Benefit Your Business in 2025",
+    description: "At Ecosave Gas & Power, we’ve already helped thousands of SMEs explore greener energy options. Here’s why making the switch could be the best decision for your business and its future.",
+    date: "2025-09-26",
+    author: "Riya Chowdhury",
+    category: "Industry Insights",
+    slug: "uk-businesses-switching-to-green-energy",
+    image: "/images/blog/250926-GreenEnergy.png",
+    icon: Factory,
+    markdown: "250926-GreenEnergy",
+    blogtext: ""
+  },
+  
 {
     title: "Everything UK Businesses Need to Know About Smart Meters",
     description: "Smart meters are quickly becoming the standard across the UK, helping households and businesses track their energy usage more accurately.",
