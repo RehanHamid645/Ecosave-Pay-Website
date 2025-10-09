@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-export const metadata: Metadata = {
+export const metadatas: Metadata = {
   title: 'Ecosave Gas and Power | Business Utility Solutions',
   description: 'Compare business utility rates and find the best deals on energy, water, and waste management services.23456',
   metadataBase: new URL('https://ecosavegasandpower.com'),
