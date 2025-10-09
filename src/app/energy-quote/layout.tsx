@@ -12,7 +12,7 @@ function getStepNumber(pathname: string): number {
   return match ? parseInt(match[1], 10) : 0
 }
 
-/* // Helper function to get percentage based on current step
+/* // Helpers function to get percentage based on current step
 function getProgressPercentage(pathname: string): number {
   const step = getStepNumber(pathname)
   
