@@ -12,7 +12,7 @@ function getStepNumber(pathname: string): number {
   return match ? parseInt(match[1], 10) : 0
 }
 
-// Helper function to get percentage based on current step
+/* // Helper function to get percentage based on current step
 function getProgressPercentage(pathname: string): number {
   const step = getStepNumber(pathname)
   
@@ -23,7 +23,7 @@ function getProgressPercentage(pathname: string): number {
     case 3: return 100
     default: return 0 // For the main page
   }
-}
+} */
 
 export default function EnergyQuoteLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname()
