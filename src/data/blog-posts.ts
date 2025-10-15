@@ -15,7 +15,19 @@ export interface BlogPost {
 }
 
 export const blogPosts: BlogPost[] = [
-   {
+  {
+    title:"How the UK’s Autumn Tempest Shook the Energy Market and Sent Electricity Prices Negative",
+    description: "In a surprising turn of events, the UK’s energy market experienced a rare phenomenon this autumn as electricity prices dipped into negative territory. ",
+    date: "2025-10-13",
+    author: "Riya Chowdhury",
+    category: "Industry Insights",
+    slug: "UK-Autumn-Tempest-Shakes-Energy-Market",
+    image: "/images/blog/storm-amy.jpg",
+    icon: Lightbulb,
+    markdown: "251013-StormAmy",
+    blogtext: ""
+  },
+  {
     title: "Power Up Your Business Presence: Choosing the Right Social Media Platforms",
     description: "At Ecosave Gas and Power, we don’t just help businesses save on energy, we empower them to grow. In today’s digital first world, your online presence is just as important as your bottom line.",
     date: "2025-10-08",
