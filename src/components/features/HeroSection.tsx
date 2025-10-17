@@ -1,10 +1,42 @@
-"use client";
+import { Metadata } from "next";
 
 import { ArrowRight } from "lucide-react";
 import Button from "@/components/shared/Button";
 import Link from "next/link";
 import { motion } from "framer-motion";
 /* import TrustpilotWidget from "./TrustpilotWidget"; */
+
+export const metadata: Metadata={
+  title: 'Careers | Ecosave Gas and Power',
+  description: 'Join us at Ecosave Gas and Power and be a part of a passionate and energetic team.',
+  keywords:['Careers','Jobs','Join us','Work with us','Sustainable energy jobs','Energy consultancy careers'],
+  metadataBase:new URL('https://ecosavegasandpower.com/careers'),
+
+  alternates:{
+    canonical:'/',
+  },
+
+  icons:'/favicon.ico',
+  // apple: '/apple-touch-icon.png',
+
+  openGraph: {
+    title: 'About Us | Ecosave Gas and Power',
+    description: 'Learn about Ecosave Gas and Power and our mission to help businesses reduce utility costs while promoting sustainable practices.',
+    url: 'https://ecosavegasandpower.com/about',
+    siteName: 'Ecosave Gas and Power',
+    images: [
+      {
+        url: 'https://ecosavegasandpower.com/about/image.jpg',
+        alt: 'About Ecosave Gas and Power',
+      },
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+}
+
 export default function HeroSection() {
   return (
     <section className="relative py-16 lg:py-48 ">

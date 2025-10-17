@@ -4,6 +4,7 @@ import BlogContent from '@/components/features/BlogContent'
 export const metadata: Metadata = {
   title: 'Blog | Ecosave Gas & Power',
   description: 'Stay informed about energy management, sustainability, and industry trends with our latest articles and guides.',
+<<<<<<< Updated upstream
   keywords: ['business energy','business gas','business electricity','business energy comparison','compare business energy prices',
     'switch business energy supplier', 'business energy savings','commercial energy suppliers','small business energy deals','medium business energy rates',
     'large business energy contracts','business utility management','business energy quotes online','renewable business energy','green business energy suppliers',
@@ -41,6 +42,36 @@ export const metadata: Metadata = {
      follow: true,
   },
     };
+=======
+  keywords:['Comapare business energy','Best business energy supplier','commercial energy rates','business energy','compare business energy rates','energy prices','edf','edf business','british gas business','eon business','business meter','npower','ovo business','shell energy business','business energy comparison','business energy tariffs','business energy deals','business gas and electricity','business energy suppliers uk',
+'business energy','energy comparison','business utilities','energy suppliers','business gas','business electricity','energy quotes','utility comparison','business insurance','connectivity solutions','business finance'],
+  metadataBase:new URL('https://ecosavegasandpower.com/about'),
+
+  alternates:{
+    canonical:'/',
+  },
+
+  icons:'/favicon.ico',
+  // apple: '/apple-touch-icon.png',
+
+  openGraph: {
+    title: 'Blog | Ecosave Gas and Power',
+    description: 'Stay informed about energy management, sustainability, and industry trends with our latest articles and guides.',
+    url: 'https://ecosavegasandpower.com/blog',
+    siteName: 'Ecosave Gas and Power',
+    images: [
+      {
+        url: 'https://ecosavegasandpower.com/about/image.jpg',
+        alt: 'About Ecosave Gas and Power',
+      },
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+}
+>>>>>>> Stashed changes
 
 export default function BlogPage() {
   return <BlogContent />
