@@ -1,5 +1,5 @@
 
-import {Bed, LucideIcon } from "lucide-react";
+import {Bed, Beef, LucideIcon } from "lucide-react";
 
 export interface CaseStudiesPost {
   title: string;
@@ -15,7 +15,19 @@ export interface CaseStudiesPost {
 }
 
 export const caseStudiesPosts: CaseStudiesPost[] = [
-{
+  {
+    title: "How Ecosave Helped a Farm Owner Close Energy Accounts Stress-Free and Save Money",
+    description: "Ecosave provided tailored energy solutions for a farm owner, ensuring a smooth transition and significant cost savings.",
+    date: "2025-10-16",
+    author: "Riya Chowdhury",
+    category: "Agriculture",
+    slug: "how-ecosave-helped-a-farm-owner",
+    image: "/images/case-studies/Farm.png",
+    icon: Beef,
+    text: " ",
+    markdown: "251016-FarmPartnership"
+  },
+  {
     title: "The Whippet Inn",
     description: "The Whippet Inn is a long standing hospitality business that needed support in managing their business energy contract.",
     date: "2025-09-15",
