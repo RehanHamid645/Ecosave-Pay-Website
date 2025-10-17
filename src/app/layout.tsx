@@ -27,9 +27,10 @@ const inter = Lato({
 })
 
 export const metadata: Metadata = {
-  title: "Ecosave - Business Energy & Services Comparison",
+  title: "Save Up to 45% on Business Energy | Compare Gas & Electric – Ecosave Gas & Power",
+
   description:
-    "Compare and save on business energy, insurance, connectivity, and finance solutions.",
+    "Compare business gas & electricity with Ecosave Gas & Power — get instant quotes from leading UK suppliers, switch to the cheapest tariff and save up to 45% on energy.",
   metadataBase: new URL('https://ecosavegasandpower.com'),
   alternates: {
     canonical: '/',
