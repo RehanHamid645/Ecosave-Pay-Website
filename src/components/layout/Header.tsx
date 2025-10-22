@@ -33,6 +33,7 @@ const navigation = [
   { name: "Blogs", href: "/blog", hovericon: <Lightbulb /> },
   { name: "Careers", href: "/careers", hovericon: <Briefcase /> },
   { name: "Case Studies", href: "/case-studies", hovericon: <BriefcaseBusiness /> }, 
+  // { name: "Get a quote", href: "/energy-quote/step1", hovericon: <Zap /> },
 ];
 
 export default function Header() {
@@ -293,11 +294,20 @@ export default function Header() {
           </p>
           <Link href="/contact">
             <Button
-              variant= "primary"
+              variant="ghost"
               size="sm"
-              className="py-1.5"
+              className="py-1.5 text-gray-900 bg-white"
             >
               Contact
+            </Button>
+          </Link>
+          <Link href="/energy-quote/step1">
+            <Button
+              variant="primary"
+              size="sm"
+              className="py-1.5 bg-[#3faa4e] text-white"
+            >
+              Get a quote
             </Button>
           </Link>
         </motion.div>

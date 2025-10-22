@@ -9,7 +9,7 @@ export default function HeroSection() {
   return (
     <section className="relative py-16 lg:py-48 ">
       <div className="absolute inset-0 bg-[url(/images/pexels-pixabay-46169.jpg)] bg-cover bg-center z-0"></div>
-      <div className="absolute inset-0 bg-[#151f34] opacity-70 z-10"></div>
+      <div className="absolute inset-0 bg-[#151f34] opacity-60 z-10"></div>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-28 relative z-20">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-8">
           <motion.div
@@ -27,20 +27,20 @@ export default function HeroSection() {
               <motion.span
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.5 }}
-                className="block text-[#73c06a]"
-              >
-                Trust in us
-              </motion.span>
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
-                className="block text-4xl"
+                className="block"
               >
-                To power your business
+                Helping Over <span className="text-[#73c06a]">50,000 Businesses</span>
               </motion.span>
             </motion.h1>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-6xl"
+            >
+              <span className="text-white">Save on</span> <span className="text-[#73c06a]" >Energy</span>
+            </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -54,17 +54,17 @@ export default function HeroSection() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-              className="mt-8 flex flex-wrap gap-4"
+              transition={{ delay: 0.65, duration: 0.45 }}
+              className="mt-6 self-start"
             >
               <Link href="/energy-quote/step1">
-                <Button size="lg" icon={ArrowRight} iconPosition="right">
+                <Button
+                  size="lg"
+                  className="px-12 py-5 text-xl font-semibold text-white bg-gradient-to-r from-[#4fc76a] to-[#1fa25a] hover:from-[#6bd07f] hover:to-[#30a17e] shadow-lg hover:shadow-2xl transform transition duration-200 focus-visible:ring-4 focus-visible:ring-[#3faa4e]/30"
+                  icon={ArrowRight}
+                  iconPosition="right"
+                >
                   Compare Now
-                </Button>
-              </Link>
-              <Link href="/about">
-                <Button size="lg" variant="outline">
-                  Learn More
                 </Button>
               </Link>
             </motion.div>
