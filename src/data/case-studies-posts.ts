@@ -16,6 +16,19 @@ export interface CaseStudiesPost {
 
 export const caseStudiesPosts: CaseStudiesPost[] = [
   {
+    title: "How Ecosave Helped a Farming Group Resolve Energy Account Issues and Save Money",
+    description: "Ecosave assisted a farming group in resolving complex energy account issues, ensuring a smooth transition and significant cost savings.",
+    date: "2025-10-29",
+    author: "Riya Chowdhury",
+    category: "Agriculture",
+    slug: "how-ecosave-helped-a-farming-group",
+    image: "/images/case-studies/FarmingGroup.jpg",
+    icon: Beef,
+    text: " ",
+    markdown: "251029-FarmingGroup"
+  },
+
+  {
     title: "How Ecosave Helped a Farm Owner Close Energy Accounts Stress-Free and Save Money",
     description: "Ecosave provided tailored energy solutions for a farm owner, ensuring a smooth transition and significant cost savings.",
     date: "2025-10-16",
