@@ -16,6 +16,18 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    title: "Relocating Your Business? Here’s How Moving Affects Your Energy Contract",
+    description: "Relocating your business can be an exciting new chapter, but it also comes with its fair share of challenges. One often overlooked aspect is how moving affects your business energy contract.",
+    date: "2025-10-22",
+    author: "Riya Chowdhury",
+    category: "Business Growth",
+    slug: "Relocating-Your-Business-How-Moving-Affects-Your-Energy-Contract",
+    image: "/images/blog/moving-properties.jpg",
+    icon: Handshake,
+    markdown: "251022-MovingProperties",
+    blogtext: ""
+  },
+  {
     title:"How the UK’s Autumn Tempest Shook the Energy Market and Sent Electricity Prices Negative",
     description: "In a surprising turn of events, the UK’s energy market experienced a rare phenomenon this autumn as electricity prices dipped into negative territory. ",
     date: "2025-10-13",
