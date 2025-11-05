@@ -1,5 +1,4 @@
-"use client";
-
+"use client"
 import React from "react";
 import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
@@ -13,9 +12,10 @@ declare global {
     };
   }
 }
-
 const MotionQuoteBanner = dynamic(
   () => Promise.resolve(QuoteBannerContent),
+  
+
   {
     ssr: false,
     loading: () => (
@@ -24,11 +24,13 @@ const MotionQuoteBanner = dynamic(
           <div className="min-h-[24px]" />
         </div>
       </div>
+    
     ),
   }
 );
 
 function QuoteBannerContent() {
+  
   const messages = [
     'Get a free quote in minutes',
     'Compare business energy and start saving',
@@ -48,6 +50,7 @@ function QuoteBannerContent() {
     return () => clearInterval(t);
   }, []);
 
+  
   const variants = {
     enter: { opacity: 0, y: -6 },
     center: { opacity: 1, y: 0 },
@@ -78,8 +81,10 @@ function QuoteBannerContent() {
   );
 }
 
-export default function QuoteBanner() {
+ export default function QuoteBanner() {
   const pathname = usePathname();
   if (pathname.startsWith("/energy-quote")) return null;
   return <MotionQuoteBanner />;
 }
+  
+

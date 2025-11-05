@@ -33,7 +33,6 @@ const navigation = [
   { name: "Blogs", href: "/blog", hovericon: <Lightbulb /> },
   { name: "Careers", href: "/careers", hovericon: <Briefcase /> },
   { name: "Case Studies", href: "/case-studies", hovericon: <BriefcaseBusiness /> }, 
-  // { name: "Get a quote", href: "/energy-quote/step1", hovericon: <Zap /> },
 ];
 
 export default function Header() {
@@ -96,7 +95,7 @@ export default function Header() {
           usePathname() === "/"
             ? isScrolled
               ? "bg-white/80 backdrop-blur-md shadow-sm"
-              : "bg-transparent"
+              : "bg-white"
             : "bg-white/80 backdrop-blur-md shadow-sm"
         }`}
     >
@@ -115,7 +114,7 @@ export default function Header() {
           <Link href="/" className="p-0">
             <Image
               src={
-                pathname === '/'? isScrolled ? "/img/Ecosave_polished.png" : "/img/Ecosave_polished_white.png":"/img/Ecosave_polished.png" } 
+                pathname === '/'? isScrolled ? "/img/Ecosave_polished.png" : "/img/Ecosave_polished.png":"/img/Ecosave_polished.png" } 
               alt="Ecosave Gas and Power"
               width={800}
               height={200}
@@ -226,9 +225,9 @@ export default function Header() {
                     ${
                             pathname === "/"
                               ? isScrolled
-                                ? "text-gray-900 hover:text-[#3faa4e]"
-                                : "text-white hover:text-gray-300"
-                              : "text-gray-900 hover:text-[#3faa4e]"
+                                ? "text-[#151f34] hover:text-[#3faa4e]"
+                                : "text-[#151f34] hover:text-gray-300"
+                              : "text-[#151f34] hover:text-[#3faa4e]"
                           } transition-colors py-1`}
                 >
                   {item.name}
@@ -259,9 +258,9 @@ export default function Header() {
                           ${
                             pathname === "/"
                               ? isScrolled
-                                ? "text-gray-900 hover:text-[#3faa4e]"
-                                : "text-white hover:text-gray-300"
-                              : "text-gray-900 hover:text-[#3faa4e]"
+                                ? "text-[#151f34] hover:text-[#3faa4e]"
+                                : "text-[#151f34] hover:text-gray-300"
+                              : "text-[#151f34] hover:text-[#3faa4e]"
                           } transition-colors group relative py-1`}
               >
                 <span className="group-hover:opacity-0 transition-opacity">
@@ -275,40 +274,37 @@ export default function Header() {
           )}
         </motion.div>
 
-        {/* Contact button */}
+       {/* Contact button */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4"
+          className=" shadow-xlhidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4"
         >
           <p
             className={`text-sm font-semibold leading-6 ${
                             pathname === "/"
                               ? isScrolled
-                                ? "text-gray-900 hover:text-[#3faa4e]"
-                                : "text-white hover:text-gray-300"
-                              : "text-gray-900 hover:text-[#3faa4e]"
+                                ? "text-[#151f34] hover:text-[#3faa4e]"
+                                : "text-[#151f34] hover:text-gray-300"
+                              : "text-[#151f34] hover:text-[#3faa4e]"
                           } py-1.5`}
           >
             0330 403 7373
           </p>
           <Link href="/contact">
             <Button
-              variant="ghost"
-              size="sm"
-              className="py-1.5 text-gray-900 bg-white"
+              variant= "ghost"
+              size="md"
+              className="py-1.5 shadow-xl"
             >
               Contact
             </Button>
           </Link>
-          <Link href="/energy-quote/step1">
-            <Button
-              variant="primary"
-              size="sm"
-              className="py-1.5 bg-[#3faa4e] text-white"
-            >
-              Get a quote
-            </Button>
+          <Link
+            href="/energy-quote/step1"
+            className=" shadow-xl inline-flex items-center justify-center rounded-md font-semibold shadow-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#30a17e] focus:ring-[#3faa4e] px-3 text-sm py-1.5 bg-[#3faa4e] text-white"
+          >
+            Get a quote
           </Link>
         </motion.div>
       </nav>

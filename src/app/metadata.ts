@@ -30,7 +30,6 @@ export const metadatas: Metadata = {
     'business energy price comparison',
     'business energy cost calculator',
     'business energy renewal',
-    'business energy switching service',
     'business energy for SMEs',
     'business energy for large businesses',
     'British Gas business',
@@ -48,7 +47,7 @@ export const metadatas: Metadata = {
     'switch business energy supplier',
     'business energy comparison site',
     'compare business utility bills',
-    'business energy quote online'
+    'business energy quote online',
   ],
   metadataBase: new URL('https://ecosavegasandpower.com'),
   alternates: {

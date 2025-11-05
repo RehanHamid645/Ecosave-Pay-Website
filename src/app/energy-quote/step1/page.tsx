@@ -39,17 +39,22 @@ const serviceOptions: { type: ServiceType; title: string; icon: React.ReactNode;
     type: 'telecom',
     title: 'Telecom',
     icon: <Phone className="h-8 w-8" />,
-    selectable: false
+    selectable: true
   },
   {
     type: 'merchant',
     title: 'Card Services',
     icon: <CreditCard className="h-8 w-8" />,
-    selectable: false
+    selectable: true
   }
 ]
 
-export default function ServiceSelectionPage() {
+type Step1Props = {
+  onNext?: () => void
+  embedded?: boolean
+}
+
+export default function ServiceSelectionPage({ onNext, embedded }: Step1Props) {
   const router = useRouter()
   
   // Local state for selections
@@ -68,7 +73,7 @@ export default function ServiceSelectionPage() {
   }, [resetForm])
 
   const isSelectable = (type: ServiceType): boolean => {
-    return ['gas', 'electricity', 'water', 'waste'].includes(type)
+    return ['gas', 'electricity', 'water', 'waste','telecom','merchant'].includes(type)
   }
 
   const handleServiceToggle = (type: ServiceType) => {
@@ -90,7 +95,11 @@ export default function ServiceSelectionPage() {
     }
     
     setSelectedServices(selections)
-    router.push('/energy-quote/step2')
+    if (onNext) {
+      onNext()
+    } else {
+      router.push('/energy-quote/step2')
+    }
   }
 
   if (!initialized) {
@@ -109,11 +118,15 @@ export default function ServiceSelectionPage() {
         transition={{ duration: 0.5 }}
       >
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center">
-          Which services interest you?
+          Pick a service below to
+          <br />
+           <span className="text-[#3faa4e]">get a free quote</span>
         </h2>
         
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8">
+          
           {serviceOptions.map((option) => (
+
             <motion.div
               key={option.type}
               whileHover={{ scale: option.selectable ? 1.05 : 1 }}
@@ -176,6 +189,18 @@ export default function ServiceSelectionPage() {
             Continue
           </Button>
         </div>
+        {!embedded && (
+          <div className="mt-4 flex justify-center">
+            <a
+              href="/"
+              target="_blank"
+              rel="noopener"
+              className="text-[#00b67a] font-medium hover:underline text-center text-lg"
+            >
+              Back to home
+            </a>
+          </div>
+        )}
       </motion.div>
     </div>
   )

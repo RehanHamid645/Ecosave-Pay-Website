@@ -9,7 +9,13 @@ import { useRouter } from 'next/navigation'
 import { Input } from '@/components/shared/Form'
 import Link from 'next/link'
 
-export default function ContactDetailsPage() {
+type Step3Props = {
+  onBack?: () => void
+  onSuccess?: () => void
+  embedded?: boolean
+}
+
+export default function ContactDetailsPage({ onBack, onSuccess, embedded = false }: Step3Props) {
   const router = useRouter()
   
   // Local state
@@ -55,12 +61,16 @@ export default function ContactDetailsPage() {
       if (Array.isArray(store.selectedServices) && store.selectedServices.length > 0) {
         setSelectedServicesList(store.selectedServices)
         
-        if (store.postcode) {
-          setPostcodeValue(store.postcode)
-          setInitialized(true)
-        } else {
-          // Redirect if no postcode
-          router.push('/energy-quote/step2')
+          if (store.postcode) {
+            setPostcodeValue(store.postcode)
+            setInitialized(true)
+          } else {
+            // Redirect if no postcode
+            if (onBack) {
+              onBack()
+            } else if (!embedded) {
+              router.push('/energy-quote/step2')
+            }
         }
       } else {
         // Redirect if no services selected
@@ -169,7 +179,11 @@ export default function ContactDetailsPage() {
       // Add a small delay before navigation to ensure store is updated
       setTimeout(() => {
         // Navigate to thank you page on success
-        router.push('/energy-quote/thank-you');
+        if (onSuccess) {
+          onSuccess()
+        } else if (!embedded) {
+          router.push('/energy-quote/thank-you');
+        }
       }, 100);
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -330,6 +344,27 @@ export default function ContactDetailsPage() {
             </Button>
           </div>
         </div>
+        <div className="mt-4 flex justify-center">
+          {embedded && onBack ? (
+            <button
+              type="button"
+              onClick={onBack}
+              className="text-[#00b67a] font-medium hover:underline text-center text-lg"
+            >
+              Back to Postcode
+            </button>
+          ) : (
+            <a
+              href="/energy-quote/step1"
+              target="_blank"
+              rel="noopener"
+              className="text-[#00b67a] font-medium hover:underline text-center text-lg"
+            >
+              Back to Postcode
+            </a>
+          )}
+        </div>
+    
       </motion.div>
     </div>
   )

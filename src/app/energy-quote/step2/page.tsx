@@ -8,7 +8,12 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Input } from '@/components/shared/Form'
 
-export default function PostcodePage() {
+type Step2Props = {
+  onNext?: () => void
+  onBack?: () => void
+  embedded?: boolean
+}
+export default function PostcodePage({ onNext, onBack, embedded = false }: Step2Props) {
   const router = useRouter()
   
   // Local state
@@ -36,10 +41,14 @@ export default function PostcodePage() {
       setSelectedServicesList(store.selectedServices)
       setInitialized(true)
     } else {
-      // Redirect if no services selected
-      router.push('/energy-quote/step1')
+      // Redirect if no services selected — prefer onBack when embedded
+      if (onBack) {
+        onBack()
+      } else if (!embedded) {
+        router.push('/energy-quote/step1')
+      }
     }
-  }, [router])
+  }, [router, onBack, embedded])
 
   const validateUKPostcode = (postcode: string) => {
     // Basic UK postcode regex pattern
@@ -67,7 +76,11 @@ export default function PostcodePage() {
     setTimeout(() => {
       setPostcode(formattedPostcode)
       setIsValidating(false)
-      router.push('/energy-quote/step3')
+      if (onNext) {
+        onNext()
+      } else if (!embedded) {
+        router.push('/energy-quote/step3')
+      }
     }, 800)
   }
 
@@ -151,6 +164,26 @@ export default function PostcodePage() {
             </Button>
           </div>
         </div>
+            <div className="mt-4 flex justify-center">
+              {embedded && onBack ? (
+                <button
+                  type="button"
+                  onClick={onBack}
+                  className="text-[#00b67a] font-medium hover:underline text-center text-lg"
+                >
+                  Back 
+                </button>
+              ) : (
+                <a
+                  href="/energy-quote/step1"
+                  target="_blank"
+                  rel="noopener"
+                  className="text-[#00b67a] font-medium hover:underline text-center text-lg"
+                >
+                  Back 
+                </a>
+              )}
+            </div>
       </motion.div>
     </div>
   )
