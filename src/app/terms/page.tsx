@@ -318,14 +318,6 @@ export default function TermsPage() {
                     <ul className="space-y-4">
                       <li className="flex gap-x-4">
                         <span className="font-semibold text-gray-900 min-w-[200px]">
-                          Contract Cancellation Administration Fee:
-                        </span>
-                        <span className="text-gray-600">
-                          has the meaning set out in clause 4.7.
-                        </span>
-                      </li>
-                      <li className="flex gap-x-4">
-                        <span className="font-semibold text-gray-900 min-w-[200px]">
                           Call Centre:
                         </span>
                         <span className="text-gray-600">
@@ -418,14 +410,8 @@ export default function TermsPage() {
                         </p>
                       </div>
                     </div>
-                    <div>
-                      <h4 id="switching-service" className="text-xl font-medium text-gray-900 mb-4">Switching Service</h4>
-                      {/* ... */}
-                    </div>
-                    <div>
-                      <h4 id="contract-checking" className="text-xl font-medium text-gray-900 mb-4">Contract Checking Service</h4>
-                      {/* ... */}
-                    </div>
+                
+                  
                   </div>
                 </div>
 
@@ -433,7 +419,7 @@ export default function TermsPage() {
                   <h3 id="charges" className="text-2xl font-semibold text-gray-900 mb-6">5. Charges</h3>
                   <div className="space-y-6">
                     <p className="text-lg leading-relaxed text-gray-600">
-                      5.1 Save for clauses 5.2, 5.3 and 6 below, Ecosave Gas and Power LTD will provide the Services free of charge.
+                      5.1 Save for clauses 5.2 and 6 below, Ecosave Gas and Power LTD will provide the Services free of charge.
                     </p>
                     <p className="text-lg leading-relaxed text-gray-600">
                       5.2 Ecosave Gas and Power LTD reserves the right to be entitled to charge for any of the Services and/or impose 
@@ -442,11 +428,7 @@ export default function TermsPage() {
                       subscribed.
                     </p>
                     <p className="text-lg leading-relaxed text-gray-600">
-                      5.3 Any Administration Fee payable under clause 4.7 above shall be payable to Ecosave Gas and Power LTD by no 
-                      later than 30 days from the date of the invoice for the same.
-                    </p>
-                    <p className="text-lg leading-relaxed text-gray-600">
-                      5.4 Without prejudice to Ecosave Gas and Power LTD&apos;s other rights and remedies, if the Customer fails to pay 
+                      5.3 Without prejudice to Ecosave Gas and Power LTD&apos;s other rights and remedies, if the Customer fails to pay 
                       when due any amount payable by it under or in connection with these Terms, it shall forthwith on demand pay 
                       interest on the overdue amount from the due date until the date of actual payment at the rate of 8 per cent 
                       per annum.

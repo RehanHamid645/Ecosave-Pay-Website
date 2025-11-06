@@ -16,6 +16,18 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    title:"Winter Ready: Reduce Your Businesses' Gas & Electricity Bills After the Clock Change",
+    description: "As winter approaches, businesses must prepare for the colder months ahead. One crucial aspect of this preparation is managing energy costs effectively.",
+    date: "2025-11-05",
+    author: "Riya Chowdhury",
+    category: "Industry Insights",
+    slug: "Winter-Ready-Reduce-Your-Businesses-Gas-Electricity-Bills-After-the-Clock-Change",
+    image: "/images/blog/251105-ClocksGoBack.png",
+    icon: Lightbulb,
+    markdown: "251105-ClocksGoBack",
+    blogtext: ""
+  },
+  {
     title: "Relocating Your Business? Here’s How Moving Affects Your Energy Contract",
     description: "Relocating your business can be an exciting new chapter, but it also comes with its fair share of challenges. One often overlooked aspect is how moving affects your business energy contract.",
     date: "2025-10-22",

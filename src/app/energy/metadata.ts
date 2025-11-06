@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 export const energymetadata: Metadata = {
-  title: 'Business Energy | Ecosave Gas & Power',
+  title: 'Save on Business Energy | Ecosave Gas & Power',
   description: 'Compare business energy suppliers and discover the cheapest business energy rates with Ecosave Gas & Power. We help UK businesses find the best commercial energy deals, reduce utility costs, and switch to reliable, cost-effective business gas and electricity plans. Start saving today with our expert business energy comparison and support.',
   keywords: ['Business Energy', 'Compare Business Utilities','edf business','british gas business','eon business energy','scottish power business energy',
     'business energy solutions','commercial energy suppliers','business gas prices','business electricity rates','business energy quotes','commercial gas suppliers',
