@@ -16,6 +16,19 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    title: "UK Energy Market Update: Stability Returns Ahead of Winter",
+    description: "After a turbulent period marked by soaring prices and supplier failures, the UK energy market is showing signs of stabilization as we approach the winter months.",
+    date: "2025-11-12",
+    author: "Riya Chowdhury",
+    category: "Industry Insights",
+    slug: "UK-Energy-Market-Update",
+    image: "/images/blog/251112-EnergyMarketUpdate.jpg",
+    icon: Lightbulb,
+    markdown: "251112-EnergyMarketUpdate",
+    blogtext: ""
+  },
+  
+  {
     title:"Winter Ready: Reduce Your Businesses' Gas & Electricity Bills After the Clock Change",
     description: "As winter approaches, businesses must prepare for the colder months ahead. One crucial aspect of this preparation is managing energy costs effectively.",
     date: "2025-11-05",
