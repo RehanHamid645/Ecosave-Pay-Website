@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 export const metadatas: Metadata = {
-  title: 'Save Up to 45% on Business Energy | Compare Gas & Electric – Ecosave Gas & Power',
+  title: 'Business Energy Comparison | Save on Gas & Electricity | Ecosave',
   description: 'Compare business utility rates and find the best deals on energy, water, and waste management services.',
   keywords: [
     'business energy comparison',
@@ -51,16 +51,16 @@ export const metadatas: Metadata = {
   ],
   metadataBase: new URL('https://ecosavegasandpower.com'),
   alternates: {
-    canonical: '/',
+    canonical: 'https://ecosavegasandpower.com',
   },
   icons: {
     icon: '/favicon.ico',
     apple: '/apple-touch-icon.png',
   },
   openGraph: {
-    title: 'Ecosave - Business Energy & Services Comparison',
+    title: 'Business Energy Comparison | Save on Gas & Electricity | Ecosave',
     description: 'Compare and save on business energy, insurance, connectivity, and finance solutions.',
-    url: 'https://ecosavegasandpower.com',
+    url: 'https://ecosavegasandpower.com/',
     siteName: 'Ecosave Gas & Power',
     locale: 'en_GB',
     type: 'website',

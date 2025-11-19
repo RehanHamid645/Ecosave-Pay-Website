@@ -13,9 +13,10 @@ type Step3Props = {
   onBack?: () => void
   onSuccess?: () => void
   embedded?: boolean
+  /** text color scheme for headings/accent: 'dark' (default) or 'light' */
+  textColorScheme?: 'dark' | 'light'
 }
-
-export default function ContactDetailsPage({ onBack, onSuccess, embedded = false }: Step3Props) {
+export default function ContactDetailsPage({ onBack, onSuccess, embedded = false, textColorScheme }: Step3Props) {
   const router = useRouter()
   
   // Local state
@@ -207,17 +208,17 @@ export default function ContactDetailsPage({ onBack, onSuccess, embedded = false
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center">
+        <h2 className={`text-2xl md:text-3xl font-bold ${textColorScheme === 'light' ? 'text-white' : 'text-gray-900'} text-center`}>
           Your Contact Details
         </h2>
-        
-        <p className="mt-4 text-gray-600 text-center mb-8">
+
+        <p className={`${textColorScheme === 'light' ? 'text-white' : 'mt-4 text-gray-600'} text-center mb-8`}>
           We'll contact you with quotes for {getSelectedServicesText(selectedServicesList)} in the {postcodeValue} area
         </p>
         
         <div className="max-w-md mx-auto mt-8 space-y-6">
           <div className="space-y-2.5">
-            <label htmlFor="name" className="text-sm font-medium leading-none">
+            <label htmlFor="name" className={`text-sm font-medium leading-none ${textColorScheme === 'light' ? 'text-white' : 'text-gray-900'}`}>
               Full Name
             </label>
             <Input
@@ -240,7 +241,7 @@ export default function ContactDetailsPage({ onBack, onSuccess, embedded = false
           </div>
 
           <div className="space-y-2.5">
-            <label htmlFor="businessName" className="text-sm font-medium leading-none">
+            <label htmlFor="businessName" className={`text-sm font-medium leading-none ${textColorScheme === 'light' ? 'text-white' : 'text-gray-900'}`}>
               Business Name
             </label>
             <Input
@@ -263,7 +264,7 @@ export default function ContactDetailsPage({ onBack, onSuccess, embedded = false
           </div> 
 
           <div className="space-y-2.5">
-            <label htmlFor="phoneNumber" className="text-sm font-medium leading-none">
+            <label htmlFor="phoneNumber" className={`text-sm font-medium leading-none ${textColorScheme === 'light' ? 'text-white' : 'text-gray-900'}`}>
               Phone Number
             </label>
             <Input

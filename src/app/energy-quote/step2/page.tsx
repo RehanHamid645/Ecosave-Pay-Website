@@ -12,8 +12,10 @@ type Step2Props = {
   onNext?: () => void
   onBack?: () => void
   embedded?: boolean
+  /** text color scheme for headings/accent: 'dark' (default) or 'light' */
+  textColorScheme?: 'dark' | 'light'
 }
-export default function PostcodePage({ onNext, onBack, embedded = false }: Step2Props) {
+export default function PostcodePage({ onNext, onBack, embedded = false, textColorScheme }: Step2Props) {
   const router = useRouter()
   
   // Local state
@@ -115,17 +117,17 @@ export default function PostcodePage({ onNext, onBack, embedded = false }: Step2
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center">
+        <h2 className={`text-2xl md:text-3xl font-bold ${textColorScheme === 'light' ? 'text-white' : 'text-gray-900'} text-center`}>
           What's your business postcode?
         </h2>
-        
-        <p className="mt-4 text-gray-600 text-center mb-8">
+
+        <p className={`${textColorScheme === 'light' ? 'text-white' : 'mt-4 text-gray-600'} text-center mb-8`}>
           We'll check which suppliers are available for {getSelectedServicesText()} in your area
         </p>
         
         <div className="max-w-md mx-auto mt-8">
           <div className="space-y-2.5">
-            <label htmlFor="postcode" className="text-sm font-medium leading-none">
+            <label htmlFor="postcode" className={`text-sm font-medium leading-none ${textColorScheme === 'light' ? 'text-white' : 'text-gray-900'}`}>
               Postcode
             </label>
             <Input

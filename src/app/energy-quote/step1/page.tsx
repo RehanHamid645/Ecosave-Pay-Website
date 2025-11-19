@@ -52,9 +52,16 @@ const serviceOptions: { type: ServiceType; title: string; icon: React.ReactNode;
 type Step1Props = {
   onNext?: () => void
   embedded?: boolean
+  showTitle?: boolean
+  /**
+   * textColorScheme controls heading/lead text coloring.
+   * - 'dark' (default): heading uses dark/green accents (for hero)
+   * - 'light': heading and accent are white (for supplier pages as the background is black)
+   */
+  textColorScheme?: 'dark' | 'light'
 }
 
-export default function ServiceSelectionPage({ onNext, embedded }: Step1Props) {
+export default function ServiceSelectionPage({ onNext, embedded, textColorScheme, showTitle }: Step1Props) {
   const router = useRouter()
   
   // Local state for selections
@@ -117,11 +124,14 @@ export default function ServiceSelectionPage({ onNext, embedded }: Step1Props) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center">
-          Pick a service below to
-          <br />
-           <span className="text-[#3faa4e]">get a free quote</span>
-        </h2>
+        {/** choose scheme: default to 'dark' unless explicitly set to 'light' */}
+        {showTitle !== false && (
+          <h2 className={`text-2xl md:text-4xl font-bold ${textColorScheme === 'light' ? 'text-white' : 'text-gray-900'} text-center ${textColorScheme === 'light' && embedded ? '-mt-20 text-6xl' : ''}`}>
+            Pick a service below to
+            <br />
+            <span className="text-[#3faa4e]">get a free quote</span>
+          </h2>
+        )}
         
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8">
           
@@ -134,7 +144,7 @@ export default function ServiceSelectionPage({ onNext, embedded }: Step1Props) {
               onClick={() => handleServiceToggle(option.type)}
               className={`
                 flex flex-col items-center justify-center
-                p-6 rounded-xl transition-all duration-200
+                p-8 rounded-xl transition-all duration-200
                 ${!option.selectable 
                   ? 'opacity-40 cursor-not-allowed border border-gray-200' 
                   : selections.includes(option.type)
@@ -152,7 +162,7 @@ export default function ServiceSelectionPage({ onNext, embedded }: Step1Props) {
               `}>
                 {option.icon}
               </div>
-              <h3 className="text-center font-medium">{option.title}</h3>
+              <h3 className={`text-center font-medium ${selections.includes(option.type) && option.selectable ? (textColorScheme === 'light' ? 'text-white' : 'text-black') : 'text-gray-900'}`}>{option.title}</h3>
               
               {option.selectable && selections.includes(option.type) && (
                 <motion.div 

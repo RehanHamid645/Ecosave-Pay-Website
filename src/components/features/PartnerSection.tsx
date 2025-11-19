@@ -4,6 +4,7 @@ import Image from 'next/image'
 import useEmblaCarousel from 'embla-carousel-react'
 import { useEffect, useCallback, useState } from 'react'
 import Link from 'next/link'
+import { url } from 'inspector'
 
 
 const partners = [
@@ -11,6 +12,7 @@ const partners = [
     name: 'British Gas',
     logo: '/img/partners/british-gas.svg',
     description: 'The UK\'s largest energy and home services provider.',
+    url:'/supplierpages/britishgas'
   },
   {
     name: 'EDF Energy',
@@ -126,31 +128,50 @@ export default function PartnerSection() {
           ) : (
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex py-6">
-                {[...partners, ...partners, ...partners].map((partner, index) => (
-                  <div
-                    key={`${partner.name}-${index}`}
-                    className="flex-[0_0_auto] mx-6 group relative flex justify-center items-center h-40 w-72 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
-                  >
-                    <div className="relative w-56 h-24">
-                      <Image
-                        src={partner.logo}
-                        alt={partner.name}
-                        fill
-                        priority={index < 6}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-contain transition-all duration-200"
-                      />
-                    </div>
-                    {partner.description && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/75 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-lg p-6">
-                        <div className="text-center">
-                          <p className="font-semibold text-lg mb-2">{partner.name}</p>
-                          <p className="text-sm line-clamp-3">{partner.description}</p>
-                        </div>
+                {[...partners, ...partners, ...partners].map((partner, index) => {
+                  const card = (
+                    <div
+                      className="flex-[0_0_auto] mx-6 group relative flex justify-center items-center h-40 w-72 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
+                    >
+                      <div className="relative w-56 h-24">
+                        <Image
+                          src={partner.logo}
+                          alt={partner.name}
+                          fill
+                          priority={index < 6}
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          className="object-contain transition-all duration-200"
+                        />
                       </div>
-                    )}
-                  </div>
-                ))}
+                      {partner.description && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/75 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-lg p-6">
+                          <div className="text-center">
+                            <p className="font-semibold text-lg mb-2">{partner.name}</p>
+                            <p className="text-sm line-clamp-3">{partner.description}</p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )
+
+                  // If partner has a url, wrap the card in a Link so it's clickable
+                  if (partner.url) {
+                    return (
+                      <Link
+                        key={`${partner.name}-${index}`}
+                        href={partner.url}
+                        aria-label={`View ${partner.name} page`}
+                        className="flex-[0_0_auto] mx-6"
+                      >
+                        {card}
+                      </Link>
+                    )
+                  }
+
+                  return (
+                    <div key={`${partner.name}-${index}`}>{card}</div>
+                  )
+                })}
               </div>
             </div>
           )}

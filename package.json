@@ -10,8 +10,10 @@
       "server": "NODE_ENV=production node server.js"
    },
    "dependencies": {
-      "@next/third-parties": "^15.5.2",
+      "@headlessui/react": "^2.2.9",
       "@heroui/react": "2.8.4",
+      "@heroui/theme": "^2.4.23",
+      "@next/third-parties": "^15.5.2",
       "@types/nodemailer": "^6.4.17",
       "@vercel/analytics": "^1.4.1",
       "@vercel/speed-insights": "^1.1.0",

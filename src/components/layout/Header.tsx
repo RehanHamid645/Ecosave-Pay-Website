@@ -32,7 +32,7 @@ const navigation = [
   },
   { name: "Blogs", href: "/blog", hovericon: <Lightbulb /> },
   { name: "Careers", href: "/careers", hovericon: <Briefcase /> },
-  { name: "Case Studies", href: "/case-studies", hovericon: <BriefcaseBusiness /> }, 
+  { name: "Case Studies", href: "/case-studies", hovericon: <BriefcaseBusiness /> },
 ];
 
 export default function Header() {
@@ -280,7 +280,7 @@ export default function Header() {
           animate={{ opacity: 1, x: 0 }}
           className=" shadow-xlhidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4"
         >
-          <p
+          { <p
             className={`text-sm font-semibold leading-6 ${
                             pathname === "/"
                               ? isScrolled
@@ -290,7 +290,7 @@ export default function Header() {
                           } py-1.5`}
           >
             0330 403 7373
-          </p>
+          </p> }
           <Link href="/contact">
             <Button
               variant= "ghost"

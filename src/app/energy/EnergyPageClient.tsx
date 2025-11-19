@@ -7,6 +7,8 @@ import Button from '@/components/shared/Button'
 import Card from '@/components/shared/Card'
 import Link from 'next/link'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
+import { useRouter } from 'next/navigation'
 
 const features = [
   {
@@ -76,13 +78,30 @@ const item = {
 
 
 // Add illustration data
-const heroIllustration = {
-  main: '/images/happy-switch.svg',
-  elements: [
-    { src: '/images/spark-1.svg', className: 'absolute -top-16 right-12 w-20 h-20 animate-float' },
-    { src: '/images/spark-2.svg', className: 'absolute bottom-12 -left-8 w-16 h-16 animate-float-delayed' }
-  ]
+
+// Dynamic client-only imports for embedding the quote steps
+interface Step1Props {
+  onNext?: () => void
+  embedded?: boolean
+  showTitle?: boolean
+  textColorScheme?: 'dark' | 'light'
 }
+interface Step2Props {
+  onNext?: () => void
+  onBack?: () => void
+  embedded?: boolean
+  textColorScheme?: 'dark' | 'light'
+}
+interface Step3Props {
+  onBack?: () => void
+  onSuccess?: () => void
+  embedded?: boolean
+  textColorScheme?: 'dark' | 'light'
+}
+
+const ServiceSelection = dynamic<Step1Props>(() => import('@/app/energy-quote/step1/page').then(m => m.default), { ssr: false })
+const Step2 = dynamic<Step2Props>(() => import('@/app/energy-quote/step2/page').then(m => m.default), { ssr: false })
+const Step3 = dynamic<Step3Props>(() => import('@/app/energy-quote/step3/page').then(m => m.default), { ssr: false })
 
 const faqs = [
   {
@@ -108,10 +127,21 @@ const faqs = [
 ]
 
 export default function EnergyPage() {
+  const [inlineStep, setInlineStep] = React.useState<number>(1)
+  const router = useRouter()
+
+  // handlers for embedded flow
+  const handleNextFromStep1 = () => setInlineStep(2)
+  const handleNextFromStep2 = () => setInlineStep(3)
+  const handleBackToStep1 = () => setInlineStep(1)
+  const handleBackToStep2 = () => setInlineStep(2)
+  const handleSuccess = () => {
+    router.push('/energy-quote/thank-you')
+  }
   return (
     <main className="min-h-screen overflow-x-hidden pt-28">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-white to-gray-50 py-12 overflow-hidden">
+      <section className="h-[900px] relative bg-gradient-to-b from-white to-gray-50 py-12 overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-5" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
@@ -150,7 +180,7 @@ export default function EnergyPage() {
                 className="mt-10 flex flex-col sm:flex-row gap-4 relative z-10"
               >
                 <Link 
-                  href="/contact" 
+                  href="/energy-quote/step1" 
                   className="w-full sm:w-auto block"
                 >
                 <Button 
@@ -191,23 +221,60 @@ export default function EnergyPage() {
                   className="relative"
                 >
                   <div className="relative h-[500px] w-full overflow-hidden rounded-2xl hidden md:block">
-                    <Image
-                      src={heroIllustration.main}
-                      alt="Happy business owners switching energy suppliers"
-                      fill
-                      className="object-contain"
-                      priority
-                    />
-                    {heroIllustration.elements.map((element, index) => (
-                      <Image
-                        key={index}
-                        src={element.src}
-                        alt=""
-                        width={80}
-                        height={80}
-                        className={element.className}
-                      />
-                    ))}
+                    
+                  </div>
+                  {/* Service selection card (mid-right) - desktop only; nudged slightly lower so it doesn't touch the quote banner */}
+                  <div className="hidden md:block absolute right-0 top-[70%] -translate-y-1/2 md:w-[360px] lg:w-[520px]">
+                    <div className="bg-white rounded-xl shadow-lg overflow-hidden transform-gpu scale-95">
+                      {/* Inline progress bar (from energy-quote layout) */}
+                      <div className="p-4">
+                        <div className="mb-4">
+                          {/** Stepper UI integrated with progress bar **/}
+                          <div className="relative flex items-center w-full mx-auto" style={{ minHeight: '60px', maxWidth: '400px' }}>
+                            <div className="absolute top-1/2 left-0 w-full h-2 bg-gray-200 rounded-full -translate-y-1/2 z-0"></div>
+                            <div
+                              className="absolute top-1/2 left-0 h-2 bg-[#3faa4e] rounded-full -translate-y-1/2 z-10 transition-all duration-500 ease-in-out"
+                              style={{
+                                width: `${((inlineStep - 1) / (3 - 1)) * 100}%`,
+                                maxWidth: '100%',
+                              }}
+                            />
+
+                            {['Energy Type', 'Postcode', 'Contact Details'].map((step, idx) => {
+                              const activeIndex = inlineStep - 1;
+                              const isActive = idx === activeIndex;
+                              const isCompleted = idx < activeIndex;
+                              const leftPercent = (idx / (3 - 1)) * 100;
+                              return (
+                                <div
+                                  key={idx}
+                                  className="flex flex-col items-center z-20"
+                                  style={{
+                                    position: 'absolute',
+                                    left: `calc(${leftPercent}% - 40px)`,
+                                    top: '50%',
+                                    transform: 'translateY(-25%)',
+                                    minWidth: '70px',
+                                  }}
+                                >
+                                  <div
+                                    className={`w-6 h-6 flex items-center justify-center rounded-full border-2 mb-2
+                                      ${isCompleted ? 'bg-green-500 border-green-500 text-white' : isActive ? 'bg-white border-blue-500 text-blue-500' : 'bg-white border-gray-300 text-gray-400'}`}
+                                  >
+                                    {isCompleted ? '✓' : idx + 1}
+                                  </div>
+                                  <div className="text-xs text-center whitespace-nowrap">{step}</div>
+                                </div>
+                              )
+                            })}
+                          </div>
+                        </div>
+                      </div>
+
+                      {inlineStep === 1 && <ServiceSelection onNext={handleNextFromStep1} embedded />}
+                      {inlineStep === 2 && <Step2 onNext={handleNextFromStep2} onBack={handleBackToStep1} embedded />}
+                      {inlineStep === 3 && <Step3 onBack={handleBackToStep2} onSuccess={handleSuccess} embedded />}
+                    </div>
                   </div>
                   {/* Adjust blur elements for mobile */}
                   <div className="absolute -bottom-4 -left-4 sm:-bottom-8 sm:-left-8 h-20 sm:h-40 w-20 sm:w-40 rounded-full bg-[#3faa4e]/10 blur-xl sm:blur-2xl" />
