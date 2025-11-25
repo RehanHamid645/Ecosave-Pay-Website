@@ -309,7 +309,7 @@ const values = [
 export default function EonClientPage() {
   const JsonLDSchema = (
     <Script
-      id="britishgas-faq-jsonld"
+      id="eon-faq-jsonld"
       type="application/ld+json"
       strategy="afterInteractive"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(EonfaqSchema) }}
@@ -356,7 +356,7 @@ export default function EonClientPage() {
         and competitive energy solutions.
       </p>
       <p className="mt-6 text-2xl text-black leading-relaxed max-w-2xl">
-        19th November 2025<br/> Riya Chowdhury
+        24th November 2025<br/> Riya Chowdhury
       </p>
     </motion.div>
   </div>
@@ -471,7 +471,7 @@ export default function EonClientPage() {
           If your E.ON business energy contract is coming to an end, you'll recieve a renewal letter
           around three months before your contract expires.
           <br/><br/>
-          This is the ideal time to speak with the energy experts at Ecosave Gas & Power. Our team can help you compare British Gas business
+          This is the ideal time to speak with the energy experts at Ecosave Gas & Power. Our team can help you compare E.ON Next business
           quotes, negotiate better renewal rates, and even secure early contract renewals to avoid costly rollover rates.
           <br/>
         </p>
