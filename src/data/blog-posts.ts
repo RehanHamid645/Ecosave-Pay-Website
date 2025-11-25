@@ -16,6 +16,19 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    title:"Why Is My Business Energy Bill So High? UK Overcharging Guide 2025",
+    description:"Most UK businesses assume their energy bill is accurate, but in 2025, thousands are unknowingly being overcharged every single month.",
+    date:"2025-11-25",
+    author: "Riya Chowdhury",
+    category:"Industry Insights",
+    slug:"Why-Is-My-Business-Energy-Bill-So-High-UK-Guide",
+    image:"/images/blog/251125-Overpaying.jpg",
+    icon:Lightbulb,
+    markdown:"251125-Overpaying",
+    blogtext:""
+
+  },
+  {
     title: "UK Energy Market Update: Stability Returns Ahead of Winter",
     description: "After a turbulent period marked by soaring prices and supplier failures, the UK energy market is showing signs of stabilization as we approach the winter months.",
     date: "2025-11-12",

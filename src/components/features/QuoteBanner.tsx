@@ -32,6 +32,8 @@ const MotionQuoteBanner = dynamic(
 function QuoteBannerContent() {
   
   const messages = [
+    'British Gas business energy quotes',
+    'E.ON Next business energy deals',
     'Get a free quote in minutes',
     'Compare business energy and start saving',
     'Request your business quote online now',
@@ -68,9 +70,22 @@ function QuoteBannerContent() {
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 text-center">
         <div className="flex items-center justify-center gap-4">
           <motion.div key={index} variants={variants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.45 }}>
-            <Link href="/energy-quote/step1" className="text-sm text-gray-100 font-semibold hover:underline">
-              {messages[index]}
-            </Link>
+            {
+              // show the current rotating message as a single link.
+              // first two messages get custom supplier links, all remaining messages use the same quote link
+            }
+            {(() => {
+              const message = messages[index]
+              let href = '/energy-quote/step1'
+              if (index === 0) href = '/supplierpages/britishgas'
+              else if (index === 1) href = '/supplierpages/eon'
+
+              return (
+                <Link href={href} className="text-sm text-gray-100 font-semibold hover:underline">
+                  {message}
+                </Link>
+              )
+            })()}
           </motion.div>
           <Link href="/energy-quote/step1" className="text-sm text-green-500 font-semibold bg-white/5 px-3 py-1 rounded-md hover:bg-white/10">
             Get a quote

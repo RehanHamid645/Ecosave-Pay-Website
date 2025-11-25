@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 export const aboutmetadata: Metadata = {
-  title: 'About Us | Ecosave Gas & Power',
+  title: 'About Ecosave Gas and Power – UK Business Energy Experts',
   description: 'Learn about Ecosave Gas & Power and our mission to help businesses reduce utility costs while promoting sustainable practices.',
   keywords: ['About Ecosave', 'Compare Business Utilities','edf business','british gas business','eon business energy','scottish power business energy',
     'business energy solutions','commercial energy suppliers','business gas prices','business electricity rates','business energy quotes','commercial gas suppliers',

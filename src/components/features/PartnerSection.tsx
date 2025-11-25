@@ -23,6 +23,7 @@ const partners = [
     name: 'E.ON',
     logo: '/img/partners/eon-next.svg',
     description: 'One of Europe\'s largest renewable energy generators.',
+    url:'/supplierpages/eon'
   },
   {
     name: 'YGP',
@@ -53,6 +54,7 @@ const partners = [
     name: 'Crown Gas & Power',
     logo: '/img/partners/crown.png',
     description: 'A specialist commercial gas supplier. Energy Supplier of the year 2024. ',
+   
   },
   {
     name: 'UGP',
