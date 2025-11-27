@@ -60,8 +60,8 @@ export default function HeroSection() {
         className="absolute inset-0 z-10 pointer-events-none bg-black/40"
         aria-hidden="true"
       />
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-28 relative z-20">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-8">
+      <div className="mx-auto max-w-7xl lg:px-4 sm:lg:px-6 lg:px-8 pt-28 relative z-20">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-8 px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -105,7 +105,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.65, duration: 0.45 }}
-              className="mt-6 self-start"
+              className="mt-6 self-start hidden lg:block"
             >
               <Link href="/energy-quote/step1">
                 <Button
@@ -202,6 +202,78 @@ export default function HeroSection() {
             </motion.div> */}
           </motion.div>
         </div>
+
+        {/* Mobile Service Selection Card - shown below hero text on mobile */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7, duration: 0.5 }}
+          className="mt-8 lg:hidden -mx-4 sm:-mx-6"
+        >
+          {/* Compare Now Button - Mobile Only */}
+          <div className="mb-6 text-center px-4 sm:px-6">
+            <Link href="/energy-quote/step1">
+              <Button
+                size="lg"
+                className="px-12 py-5 text-xl font-semibold text-white bg-gradient-to-r from-[#4fc76a] to-[#1fa25a] hover:from-[#6bd07f] hover:to-[#30a17e] shadow-lg hover:shadow-2xl transform transition duration-200 focus-visible:ring-4 focus-visible:ring-[#3faa4e]/30"
+                icon={ArrowRight}
+                iconPosition="right"
+              >
+                Compare Now
+              </Button>
+            </Link>
+          </div>
+
+          <div className="bg-white rounded-none shadow-lg overflow-hidden">
+            {/* Inline progress bar */}
+            <div className="p-4">
+              <div className="mb-4">
+                <div className="relative flex items-center w-full mx-auto" style={{ minHeight: '44px', maxWidth: '340px' }}>
+                  <div className="absolute top-1/2 left-0 w-full h-2 bg-gray-200 rounded-full -translate-y-1/2 z-0"></div>
+                  <div
+                    className="absolute top-1/2 left-0 h-2 bg-[#3faa4e] rounded-full -translate-y-1/2 z-10 transition-all duration-500 ease-in-out"
+                    style={{
+                      width: `${((inlineStep - 1) / (3 - 1)) * 100}%`,
+                      maxWidth: '100%',
+                    }}
+                  />
+
+                  {['Energy Type', 'Postcode', 'Contact Details'].map((step, idx) => {
+                    const activeIndex = inlineStep - 1;
+                    const isActive = idx === activeIndex;
+                    const isCompleted = idx < activeIndex;
+                    const leftPercent = (idx / (3 - 1)) * 100;
+                    return (
+                      <div
+                        key={idx}
+                        className="flex flex-col items-center z-20"
+                        style={{
+                          position: 'absolute',
+                          left: `calc(${leftPercent}% - 30px)`,
+                          top: '50%',
+                          transform: 'translateY(-25%)',
+                          width: '60px',
+                        }}
+                      >
+                        <div
+                          className={`w-6 h-6 flex items-center justify-center rounded-full border-2 mb-2
+                            ${isCompleted ? 'bg-green-500 border-green-500 text-white' : isActive ? 'bg-white border-blue-500 text-blue-500' : 'bg-white border-gray-300 text-gray-400'}`}
+                        >
+                          {isCompleted ? '✓' : idx + 1}
+                        </div>
+                        <div style={{ fontSize: '10px', lineHeight: '1.1', wordWrap: 'break-word', textAlign: 'center', width: '100%' }}>{step}</div>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {inlineStep === 1 && <ServiceSelection onNext={handleNextFromStep1} embedded />}
+            {inlineStep === 2 && <Step2 onNext={handleNextFromStep2} onBack={handleBackToStep1} embedded />}
+            {inlineStep === 3 && <Step3 onBack={handleBackToStep2} onSuccess={handleSuccess} embedded />}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

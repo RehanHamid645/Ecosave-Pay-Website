@@ -103,13 +103,11 @@ export default function Header() {
         className="mx-auto flex max-w-7xl items-center justify-between p-2 lg:px-8"
         aria-label="Global"
       >
-        <div className="flex lg:hidden w-10 invisible" />
-
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 2 }}
-          className="flex flex-1 lg:flex-1 -m-2 justify-center lg:justify-start"
+          className="flex flex-1 lg:flex-1 -m-2 justify-start"
         >
           <Link href="/" className="p-0">
             <Image
@@ -125,14 +123,29 @@ export default function Header() {
         </motion.div>
 
         {/* Mobile Menu */}
-        <div className="flex lg:hidden w-10 relative justify-end">
+        <div className="flex lg:hidden items-center gap-2 relative">
+          <Link href="/contact">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-xs px-2"
+            >
+              Contact
+            </Button>
+          </Link>
+          <Link
+            href="/energy-quote/step1"
+            className="inline-flex items-center justify-center rounded-md font-semibold shadow-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#30a17e] focus:ring-[#3faa4e] px-2 text-xs py-1.5 bg-[#3faa4e] text-white"
+          >
+            Get a quote
+          </Link>
           <Button
             variant="ghost"
             size="sm"
             icon={mobileMenuOpen ? X : Menu}
             onClick={handleToggleMenu}
             aria-expanded={mobileMenuOpen}
-            className={pathname === "/" ? "text-white" : "text-gray-900"}
+            className="text-gray-900"
           >
             <span className="sr-only">Toggle menu</span>
           </Button>
@@ -145,7 +158,7 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
-                className="absolute right-0 top-[calc(100%+0.5rem)] mt-1 w-48 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 z-[101] overflow-hidden"
+                className="absolute right-0 top-[calc(100%+0.5rem)] mt-1 w-48 rounded-md bg-gray-900 shadow-lg ring-1 ring-black ring-opacity-5 z-[101] overflow-hidden"
               >
                 <div className="py-1">
                   {navigation.map((item) =>
@@ -153,7 +166,7 @@ export default function Header() {
                       <div key={item.name}>
                         <button
                           onClick={() => setServicesOpen(!servicesOpen)}
-                          className="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#3faa4e]"
+                          className="w-full text-left block px-4 py-2 text-sm text-white hover:bg-gray-800 hover:text-[#3faa4e]"
                         >
                           {item.name}
                         </button>
@@ -169,10 +182,10 @@ export default function Header() {
                                 <Link
                                   key={child.name}
                                   href={child.href}
-                                  className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 hover:text-[#3faa4e]"
+                                  className="flex items-center gap-2 px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-[#3faa4e]"
                                   onClick={handleCloseMenu}
                                 >
-                                  <span className="w-4 h-4 text-gray-500">
+                                  <span className="w-4 h-4 text-gray-400">
                                     {child.hovericon}
                                   </span>
                                   {child.name}
@@ -186,21 +199,21 @@ export default function Header() {
                       <Link
                         key={item.name}
                         href={item.href}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#3faa4e]"
+                        className="block px-4 py-2 text-sm text-white hover:bg-gray-800 hover:text-[#3faa4e]"
                         onClick={handleCloseMenu}
                       >
                         {item.name}
                       </Link>
                     )
                   )}
-                  <div className="border-t border-gray-200 mt-1 pt-1">
+                  <div className="border-t border-gray-700 mt-1 pt-1">
                     <Link href="/contact" onClick={handleCloseMenu}>
-                      <span className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#3faa4e]">
+                      <span className="block px-4 py-2 text-sm text-white hover:bg-gray-800 hover:text-[#3faa4e]">
                         Get A Call
                       </span>
                     </Link>
                     <Link href="/portal" onClick={handleCloseMenu}>
-                      <span className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#3faa4e]">
+                      <span className="block px-4 py-2 text-sm text-white hover:bg-gray-800 hover:text-[#3faa4e]">
                         Portal
                       </span>
                     </Link>
@@ -278,19 +291,13 @@ export default function Header() {
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          className=" shadow-xlhidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4"
+          className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4 lg:items-center"
         >
-          { <p
-            className={`text-sm font-semibold leading-6 ${
-                            pathname === "/"
-                              ? isScrolled
-                                ? "text-[#151f34] hover:text-[#3faa4e]"
-                                : "text-[#151f34] hover:text-gray-300"
-                              : "text-[#151f34] hover:text-[#3faa4e]"
-                          } py-1.5`}
+          <p
+            className="text-sm font-semibold leading-6 text-[#151f34]"
           >
             0330 403 7373
-          </p> }
+          </p>
           <Link href="/contact">
             <Button
               variant= "ghost"
