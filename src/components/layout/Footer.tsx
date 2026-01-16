@@ -13,9 +13,10 @@ const navigation = {
     { name: 'Contact', href: '/contact' },
   ],
   services: [
-    { name: 'Energy', href: '/energy' },
-    { name: 'Water', href: '/water' },
-    { name: 'Waste', href: '/waste' },
+    { name: 'Face to Face', href: '/FaceToFace' },
+    { name: 'EPOS Systems', href: '/EposSystems' },
+    { name: 'Virtual Terminals', href: '/VirtualPayments' },
+     {name:'Online Payments',href:'/'}
   ],
   support: [
     { name: 'Contact Us', href: '/contact' },
@@ -43,12 +44,12 @@ const social = [
   },
   {
     name: 'Instagram',
-    href: 'https://www.instagram.com/ecosavegasandpower/',
+    href: 'https://www.instagram.com/ecosavepay/',
     icon: Instagram,
   },
   {
     name: 'LinkedIn',
-    href: 'https://uk.linkedin.com/company/ecosave-gas-power-ltd',
+    href: 'https://uk.linkedin.com/company/ecosave-pay-ltd',
     icon: Linkedin,
   },
 ]
@@ -64,7 +65,7 @@ export default function Footer() {
           <div className="space-y-3">
             <Link href="/" className="p-2 -m-2">
               <Image
-                src="/img/Ecosave_polished_white.png"
+                src="/img/ecosavepay.png"
                 alt="Ecosave Gas and Power"
                 width={600}
                 height={200}
@@ -73,8 +74,8 @@ export default function Footer() {
             </Link>
             <p className="text-sm leading-6 text-gray-300">
               The most trusted business energy consultancy in the UK. Our expert team simplifies the process of comparing and switching business utility suppliers to save you time and money.<br/>
-              Ecosave Gas and Power Ltd is a company registered in England and Wales.<br/>
-              Registered number: 12013715
+              Ecosave Pay Ltd is a company registered in England and Wales.<br/>
+              Registered number: 15055468
             </p>
             <div className="mt-5 flex space-x-6">
               {social.map((item) => (
@@ -147,16 +148,16 @@ export default function Footer() {
         <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-xs leading-5 text-gray-400">
-              &copy; {new Date().getFullYear()} All rights reserved by Ecosave Gas and Power.
+              &copy; {new Date().getFullYear()} All rights reserved by Ecosave Pay.
             </p>
             <div className="flex flex-col md:flex-row items-center gap-4 text-gray-400">
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4" />
-                <span className="text-xs text-[#151f34]">0330 403 7373</span>
+                <span className="text-xs text-[#151f34]">0161 814 9299</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4" />
-                <span className="text-xs">info@ecosavegasandpower.com</span>
+                <span className="text-xs">info@ecosavepay.com</span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4" />

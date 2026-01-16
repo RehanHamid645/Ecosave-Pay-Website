@@ -223,7 +223,6 @@ export default function EnergyPage() {
                   <div className="relative h-[500px] w-full overflow-hidden rounded-2xl hidden md:block">
                     
                   </div>
-                  {/* Service selection card (mid-right) - desktop only; nudged slightly lower so it doesn't touch the quote banner */}
                   <div className="hidden md:block absolute right-0 top-[70%] -translate-y-1/2 md:w-[360px] lg:w-[520px]">
                     <div className="bg-white rounded-xl shadow-lg overflow-hidden transform-gpu scale-95">
                       {/* Inline progress bar (from energy-quote layout) */}

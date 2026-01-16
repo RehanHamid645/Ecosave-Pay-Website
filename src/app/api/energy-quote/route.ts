@@ -80,8 +80,8 @@ export async function POST(req: Request) {
     
     try {
       const result = await sendMail({
-        to: process.env.RESEND_TO || 'info@ecosavegas.co.uk',
-        subject: `New Energy Quote Request - ${name} - ${postcode}`,
+        to: process.env.RESEND_TO || 'info@ecosavepay.com',
+        subject: `New Energy/Card Services Quote Request - ${name} - ${postcode}`,
         html: htmlContent,
       })
 

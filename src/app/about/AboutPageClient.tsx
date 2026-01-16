@@ -1,122 +1,95 @@
-'use client'
+import React from 'react';
+import Image from 'next/image';
+import FAQSection from '@/components/features/FAQSection';
 
-import { motion } from 'framer-motion'
-import { Shield, Users, Leaf, Trophy } from 'lucide-react'
-import Card from '@/components/shared/Card'
-import TimelineSection from '@/components/features/TimelineSection'
+// --- Sub-components for About Page ---
 
+/**
+ * Section 1: Bento Grid Layout
+ * Features the dark theme with radial glow and a 3-part grid.
+ */
+const RedefiningPayments = () => (
+  <section className="bg-black text-white py-24 px-6 overflow-hidden relative min-h-[800px] flex items-center">
+    {/* Background Glow Effect */}
+    <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#5ece6d] blur-[120px] rounded-full -mr-40 -mt-40 opacity-20 z-10" />
+    
+    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-20">
+      <div>
+        <span className="inline-block bg-white text-black px-6 py-2 rounded-full text-xs font-bold mb-8 tracking-widest uppercase shadow-sm">
+          ABOUT ECOSAVE PAY
+        </span>
+        <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[1.05] mb-8">
+          Redefining Payment <br /> Experiences
+        </h2>
+        <p className="text-gray-400 text-lg md:text-xl max-w-xl leading-relaxed font-medium">
+          We're payment solution specialists, built to help businesses accept payments efficiently and securely. 
+          With a focus on innovation, simplicity, and support, we deliver reliable, cost-effective tools that grow with you.
+        </p>
+      </div>
 
-const values = [
-  {
-    title: 'Customer First',
-    description: 'We prioritize understanding your needs and delivering personalized energy solutions.',
-    icon: Users,
-  },
-  {
-    title: 'Trusted Service',
-    description: 'Our team of experts provides reliable, transparent advice and support.',
-    icon: Shield,
-  },
-  {
-    title: 'Sustainability',
-    description: 'Committed to promoting sustainable energy practices and environmental responsibility.',
-    icon: Leaf,
-  },
-  {
-    title: 'Excellence',
-    description: 'Striving for excellence in every aspect of our service delivery.',
-    icon: Trophy,
-  },
-]
+      {/* Bento Grid Layout */}
+      <div className="grid grid-cols-2 gap-4 w-full h-full mt-48">
+        {/* Top Feature Box */}
+        <div className="col-span-2 aspect-[16/8] bg-[#d9d9d9] rounded-[2.5rem] relative overflow-hidden" />
+        
+        {/* Bottom Left Box */}
+        <div className="aspect-square bg-[#d9d9d9] rounded-[2.5rem] relative overflow-hidden" />
+        
+        {/* Bottom Right Box */}
+        <div className="aspect-square bg-[#d9d9d9] rounded-[2.5rem] relative overflow-hidden" />
+      </div>
+    </div>
+  </section>
+);
 
-export default function AboutPageClient() {
+/**
+ * Section 2: Split Feature Layout
+ * Features the brand green background and high-impact portrait visual.
+ */
+const WhoWeAre = () => (
+  <section className="bg-[#6ec99c] py-24 px-6 min-h-[900px] flex items-center">
+    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      
+      {/* Visual Placeholder Column */}
+      <div className="mt- 10 relative aspect-[4/5] bg-[#d9d9d9] rounded-[3rem] shadow-2xl overflow-hidden" />
+
+      {/* Content Column */}
+      <div className="text-white">
+        <p className="text-xs font-bold tracking-[0.2em] uppercase mb-6 opacity-90">
+          Who We Are
+        </p>
+        <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-tight mb-10">
+          Your trusted partner in secure, seamless payments
+        </h2>
+        
+        <div className="space-y-8 text-lg font-medium leading-relaxed opacity-95">
+          <p>
+            EcoSave Pay is a next-generation payment solutions provider, offering smart, 
+            secure tools for card machines, EPOS systems, online payments, and fintech 
+            innovation across the UK. We're more than a payment processor, we're 
+            passionate about reshaping how businesses get paid and how customers pay, 
+            with simplicity, speed, and sustainability at the core.
+          </p>
+          <p>
+            Founded with a mission to make payments easier and more ethical, 
+            EcoSave Pay is built for modern businesses across hospitality, retail, 
+            healthcare, and professional services, delivering flexible, future-ready 
+            solutions that grow with you.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+// --- Main Page Component ---
+
+export default function AboutPage() {
   return (
-    <main className="min-h-screen pt-28">
-      <section className="relative bg-white py-24 ">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto"
-          >
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-              About <span className="text-[#3faa4e]">Ecosave</span>
-            </h1>
-            <p className="mt-6 text-lg text-gray-600">
-              Helping businesses find better deals on their utilities since 2009
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gray-50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-2">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="space-y-6"
-            >
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900">Our Mission</h2>
-              <p className="text-lg text-gray-600">
-                We are dedicated to helping businesses reduce their utility costs while promoting sustainable practices. Our expert team works to find the best energy, water, and waste management solutions for our clients.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="space-y-6"
-            >
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900">Our Approach</h2>
-              <p className="text-lg text-gray-600">
-                We take a comprehensive approach to utility management, considering both cost savings and environmental impact. Our team stays up-to-date with market trends and regulations to provide the best advice to our clients.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900">Our Values</h2>
-            <p className="mt-4 text-lg text-gray-600">
-              The principles that guide our service delivery
-            </p>
-          </motion.div>
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {values.map((value) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
-                <Card className="h-full p-6 flex flex-col items-center text-center">
-                  <div className="bg-[#3faa4e]/10 p-3 rounded-full mb-4">
-                    <value.icon className="h-6 w-6 text-[#3faa4e]" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    {value.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {value.description}
-                  </p>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <TimelineSection />
+    <main className="font-sans antialiased overflow-x-hidden">
+      <RedefiningPayments />
+      <WhoWeAre />
+      <FAQSection/>
     </main>
-  )
-} 
+  );
+}

@@ -5,6 +5,7 @@ import { Mail, Phone, MapPin, ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import Button from "@/components/shared/Button"
 import { useState } from "react"
+import Image from "next/image"
 /* import CalendarPicker from "@/components/shared/Calendar"
 import { DateValue } from "@internationalized/date" */
 
@@ -41,17 +42,17 @@ interface ContactInfoProps {
 
 const contactInfo = [
   {
-    icon: <Phone className="h-6 w-6" />,
+    icon: <Phone className="text-white h-6 w-6" />,
     title: "Phone",
-    details: "0330 403 7373",
+    details: "0161 814 9299",
   },
   {
-    icon: <Mail className="h-6 w-6" />,
+    icon: <Mail className="text-white h-6 w-6" />,
     title: "Email",
-    details: "info@ecosavegasandpower.com",
+    details: "info@ecosavepay.com",
   },
   {
-    icon: <MapPin className="h-6 w-6" />,
+    icon: <MapPin className="text-white h-6 w-6" />,
     title: "Office",
     details: "Lloyds House 18-22, Lloyd Street, Manchester, England, M2 5WA",
   },
@@ -64,8 +65,8 @@ function ContactInfo({ icon, title, details, className }: ContactInfoProps) {
         {icon}
       </div>
       <div>
-        <h3 className="font-semibold text-base">{title}</h3>
-        <p className="mt-1.5 text-sm text-muted-foreground">{details}</p>
+        <h3 className="font-semibold text-base text-white">{title}</h3>
+        <p className="mt-1.5 text-sm text-white">{details}</p>
       </div>
     </div>
   )
@@ -127,16 +128,28 @@ export function ContactSection() {
   }
 
   return (
-    <section className="w-full py-16 md:py-24">
-      <div className="container px-4 md:px-6">
-        <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-2">
+    <section className="w-full py-16 md:py-24 relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none select-none">
+        <Image
+          src="/images/green-black-bg.png"
+          alt="Green Gradient Background"
+          fill
+          style={{objectFit: 'cover'}}
+          priority
+          className="z-0 opacity-90"
+        />
+      </div>
+      
+      <div className="container px-4 md:px-6 relative z-10">
+        <div className="grid max-w-7xl gap-12 lg:grid-cols-2">
           {/* Contact Information */}
-          <div className="space-y-8">
+          <div className="mt-12 space-y-8">
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
+              <h2 className="text-6xl text-white font-bold tracking-tighter sm:text-6xl">
                 Get in Touch
               </h2>
-              <p className="text-lg text-muted-foreground max-w-[85%]">
+              <p className="text-lg text-white max-w-[85%]">
                 Have questions about our services? Our team is here to help you find the best utility deals for your business.
               </p>
             </div>
@@ -149,8 +162,8 @@ export function ContactSection() {
 
             {/* Operating Hours */}
             <div className="rounded-xl border p-6 bg-muted/50">
-              <h3 className="font-semibold text-base">Operating Hours</h3>
-              <div className="mt-4 space-y-3 text-sm text-muted-foreground">
+              <h3 className="text-white font-semibold text-base">Operating Hours</h3>
+              <div className="mt-4 space-y-3 text-sm text-white">
                 <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
                 <p>Saturday, Sunday & Bank Holidays: Closed</p>
               </div>
@@ -158,11 +171,11 @@ export function ContactSection() {
           </div>
 
           {/* Contact Form */}
-          <div className="rounded-xl border bg-card p-8">
+          <div className="rounded-xl border bg-black p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid gap-5 sm:grid-cols-2">
                 <div className="space-y-2.5">
-                  <label htmlFor="firstName" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                  <label htmlFor="firstName" className="text-sm font-medium text-white leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                     First name
                   </label>
                   <Input 
@@ -173,7 +186,7 @@ export function ContactSection() {
                   />
                 </div>
                 <div className="space-y-2.5">
-                  <label htmlFor="lastName" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                  <label htmlFor="lastName" className="text-sm font-medium text-white leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                     Last name
                   </label>
                   <Input 
@@ -185,7 +198,7 @@ export function ContactSection() {
                 </div>
               </div>
               <div className="space-y-2.5">
-                <label htmlFor="businessName" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                <label htmlFor="businessName" className="text-sm font-medium text-white leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                   Business Name
                 </label>
                 <Input 
@@ -196,7 +209,7 @@ export function ContactSection() {
                 />
               </div>
               <div className="space-y-2.5">
-                <label htmlFor="email" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                <label htmlFor="email" className="text-sm font-medium text-white leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                   Email
                 </label>
                 <Input 
@@ -208,7 +221,7 @@ export function ContactSection() {
                 />
               </div>
               <div className="space-y-2.5">
-                <label htmlFor="phone" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                <label htmlFor="phone" className="text-sm font-medium text-white leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                   Phone number
                 </label>
                 <Input 
@@ -228,7 +241,7 @@ export function ContactSection() {
                 selectedTime={selectedTime}
               /> */}
               <div className="space-y-2.5">
-                <label htmlFor="message" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                <label htmlFor="message" className="text-sm font-medium text-white leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                   Message
                 </label>
                 <Textarea
@@ -273,4 +286,4 @@ export function ContactSection() {
   )
 }
 
-export default ContactSection 
+export default ContactSection

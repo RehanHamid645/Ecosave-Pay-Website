@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Lightbulb, Menu, X, ChevronDown } from "lucide-react";
+import { Lightbulb, Menu, X, ChevronDown, User, CreditCard, Computer,Globe } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import Button from "@/components/shared/Button";
 import { motion, AnimatePresence } from "framer-motion";
+// Removed incorrect import of Home page component
 import {
   Zap,
   Droplet,
@@ -16,6 +17,8 @@ import {
   BriefcaseBusiness,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
+import HomePageClient from "@/app/HomePageClient";
+import { Card } from "@heroui/react";
 
 const navigation = [
   { name: "Home", href: "/", hovericon: <Home /> },
@@ -25,9 +28,10 @@ const navigation = [
     href: "#",
     dropdown: true,
     children: [
-      { name: "Energy", href: "/energy", hovericon: <Zap /> },
-      { name: "Water", href: "/water", hovericon: <Droplet /> },
-      { name: "Waste", href: "/waste", hovericon: <Trash2 /> },
+      { name: "Face to Face", href: "/FaceToFace", hovericon: <User/> },
+      { name: "Virtual Terminals", href: "/VirtualPayments", hovericon: <CreditCard /> },
+      { name: "EPOS Systems", href: "/EposSystems", hovericon: <Computer /> },
+      {name: "Online Payments",href:"/OnlinePayments",hovericon:<Globe/>}
     ],
   },
   { name: "Blogs", href: "/blog", hovericon: <Lightbulb /> },
@@ -112,7 +116,7 @@ export default function Header() {
           <Link href="/" className="p-0">
             <Image
               src={
-                pathname === '/'? isScrolled ? "/img/Ecosave_polished.png" : "/img/Ecosave_polished.png":"/img/Ecosave_polished.png" } 
+                pathname === '/'? isScrolled ? "/img/ecosavepay.png" : "/img/ecosavepay.png":"/img/ecosavepay.png" } 
               alt="Ecosave Gas and Power"
               width={800}
               height={200}
@@ -296,7 +300,7 @@ export default function Header() {
           <p
             className="text-sm font-semibold leading-6 text-[#151f34]"
           >
-            0330 403 7373
+            0161 814 9299
           </p>
           <Link href="/contact">
             <Button

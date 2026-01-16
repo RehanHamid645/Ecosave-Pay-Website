@@ -28,7 +28,7 @@ const MotionQuoteBanner = dynamic(
     ),
   }
 );
-
+I need you to design a template for a sector pageXOffset, i will give you the text, it needs to be coded in the same coding style and format as the rpeviosuly genertaed code (in typescript), and leave placeholders for Images. The template needs to be enegaging and professional.Any questions just ask
 function QuoteBannerContent() {
   
   const messages = [

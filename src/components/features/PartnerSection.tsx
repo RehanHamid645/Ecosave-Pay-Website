@@ -1,190 +1,114 @@
 'use client'
 
-import Image from 'next/image'
-import useEmblaCarousel from 'embla-carousel-react'
-import { useEffect, useCallback, useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
-import { url } from 'inspector'
+import {
+  CreditCardIcon,
+  ShoppingCartIcon,
+  DocumentDuplicateIcon,
+  UsersIcon,
+  ArrowUpRightIcon,
+} from '@heroicons/react/24/outline'
 
-
-const partners = [
+// --- Data for the Payment Solution Cards ---
+// Each object contains the icon, title, description, and an optional link/URL.
+const paymentSolutions = [
   {
-    name: 'British Gas',
-    logo: '/img/partners/british-gas.svg',
-    description: 'The UK\'s largest energy and home services provider.',
-    url:'/supplierpages/britishgas'
+    icon: CreditCardIcon,
+    title: 'Face to Face payments',
+    description:
+      'Accept contactless and mobile payments with portable terminals.',
+    url: '/payments/face-to-face', // Example URL
   },
   {
-    name: 'EDF Energy',
-    logo: '/img/partners/edf.svg',
-    description: 'Leading generator of zero carbon electricity in Britain.',
+    icon: ShoppingCartIcon,
+    title: 'Online Gateway',
+    description:
+      'Website integration with mobile checkout and advanced security.',
+    url: '/payments/online-gateway', // Example URL
   },
   {
-    name: 'E.ON',
-    logo: '/img/partners/eon-next.svg',
-    description: 'One of Europe\'s largest renewable energy generators.',
-    url:'/supplierpages/eon'
+    icon: DocumentDuplicateIcon,
+    title: 'Virtual Payments',
+    description: 'Send secure payment links via email/SMS and process telephone payments.',
+    url: '/payments/virtual-terminal', // Example URL
   },
   {
-    name: 'YGP',
-    logo: '/img/partners/YGP-Large.png',
-    description: 'A leading business energy provider in the UK in terms of sustainability.',
-  },
-  {
-    name: 'YÜ Energy',
-    logo: '/img/partners/yu_logo_720x412.png',
-    description: 'Supporting over 50,000 businesses with YÜtility simplicity.',
-  },
-  {
-    name: 'Valda Energy',
-    logo: '/img/partners/valda.svg',
-    description: 'A leading OFGEM-licensed energy specialist for businesses.',
-  },
-  {
-    name: 'Everflow',
-    logo: '/img/partners/Everflow.png',
-    description: 'A digital-first energy supplier with flexible, transparent pricing.',
-  },
-  {
-    name: 'Total Energy',
-    logo: '/img/partners/totale.png',
-    description: 'An integrated provider of competitive energy solutions.',
-  },
-  {
-    name: 'Crown Gas & Power',
-    logo: '/img/partners/crown.png',
-    description: 'A specialist commercial gas supplier. Energy Supplier of the year 2024. ',
-   
-  },
-  {
-    name: 'UGP',
-    logo: '/img/partners/ugp.png',
-    description: 'An independent supplier offering tailored utility solutions.',
-  },
-  {
-    name: 'Dyce',
-    logo: '/img/partners/dyce.png',
-    description: 'A forward-thinking firm focused on innovative energy efficiency.',
-  },
-  {
-    name: 'Smartest energy',
-    logo: '/img/partners/smartest.png',
-    description: 'A tech-driven provider with smart, sustainable energy options.',
-  },
-  {
-    name: 'PE',
-    logo: '/img/partners/pe.png',
-    description: 'A reliable partner delivering customer-focused energy services.',
+    icon: UsersIcon,
+    title: 'EPOS Solutions',
+    description: 'All in one business management systems with built-in payments.',
+    url: '/payments/epos-systems', // Example URL
   },
 ]
 
+// --- Reusable Card Component ---
+const PaymentSolutionCard = ({ icon: Icon, title, description, url }: {
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  title: string;
+  description: string;
+  url?: string;
+}) => {
+  const CardContent = (
+    <div className="flex flex-col h-full min-h-[320px] p-10 sm:p-12 bg-gradient-to-br from-[#7dd3c0] to-[#6bc4b0] rounded-3xl shadow-xl transition-all duration-300 hover:scale-[1.05] hover:shadow-2xl relative">
+      {/* Icon Container at top with larger size */}
+      <div className="flex justify-center mb-8">
+        <div className="flex-shrink-0">
+          <Icon className="h-20 w-20 sm:h-24 sm:w-24 text-white" strokeWidth={1.5} aria-hidden="true" />
+        </div>
+      </div>
 
-export default function PartnerSection() {
-  const [isClient, setIsClient] = useState(false)
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: 'center',
-    loop: true,
-    dragFree: true,
-    containScroll: 'trimSnaps',
-    duration: 3000
-  })
+      {/* Arrow Icon in bottom right corner */}
+      <div className="absolute bottom-8 right-8 bg-black rounded-full p-2">
+        <ArrowUpRightIcon className="h-5 w-5 text-white transition-transform duration-300 group-hover:rotate-45" />
+      </div>
 
-  const scrollNext = useCallback(() => {
-    if (!emblaApi) return
-    emblaApi.scrollNext()
-  }, [emblaApi])
+      {/* Text Content */}
+      <div className="text-left mt-auto">
+        <h3 className="text-2xl font-bold text-black mb-3">{title}</h3>
+        <p className="text-base text-black/80 leading-relaxed">{description}</p>
+      </div>
+    </div>
+  )
 
-  // Handle client-side mounting
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
+  if (url) {
+    return (
+      <Link href={url} className="block h-full group">
+        {CardContent}
+      </Link>
+    )
+  }
 
-  // Handle carousel scrolling
-  useEffect(() => {
-    if (!emblaApi || !isClient) return
+  return <div className="h-full">{CardContent}</div>
+}
 
-    const interval = setInterval(scrollNext, 3000)
-    return () => clearInterval(interval)
-  }, [emblaApi, scrollNext, isClient])
-
+// --- Main Section Component ---
+export default function PaymentSolutionsSection() {
   return (
-    <section className="bg-gray-50 py-16">
+    // Background retained as requested (using the black-green-bg image)
+    <section className="bg-[url(/images/green-black-bg.png)] bg-cover py-20 lg:py-32 text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900">
-            Our Trusted Providers
-          </h2>
-          <p className="mt-4 text-lg text-gray-600">
-          We work with leading providers to find you the best solution 
+        
+        {/* Main Title */}
+        <div className="text-center mb-10 lg:mb-16">
+          <h1 className="text-5xl sm:text-6xl font-extrabold tracking-tight">
+            Payment Solutions Designed Around Your Business
+          </h1>
+        </div>
+
+        {/* Supporting Text */}
+        <div className="mx-auto max-w-4xl text-center mb-16">
+          <p className="text-base sm:text-lg text-gray-300">
+            At Ecosave Pay, we go beyond simply processing transactions. We understand what truly matters to UK businesses—transparent pricing, quick access to your funds, reliable technology, and dedicated support that puts you first. Accept payments effortlessly with solutions built to keep your business moving.
           </p>
         </div>
 
-        <div className="relative min-h-[200px]">
-          {!isClient ? (
-            <div className="flex items-center justify-center min-h-[200px]">
-              <div className="relative">
-                <div className="h-16 w-16 rounded-full border-4 border-gray-200"></div>
-                <div className="h-16 w-16 rounded-full border-4 border-[#3faa4e] border-t-transparent animate-spin absolute top-0 left-0"></div>
-              </div>
-            </div>
-          ) : (
-            <div className="overflow-hidden" ref={emblaRef}>
-              <div className="flex py-6">
-                {[...partners, ...partners, ...partners].map((partner, index) => {
-                  const card = (
-                    <div
-                      className="flex-[0_0_auto] mx-6 group relative flex justify-center items-center h-40 w-72 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
-                    >
-                      <div className="relative w-56 h-24">
-                        <Image
-                          src={partner.logo}
-                          alt={partner.name}
-                          fill
-                          priority={index < 6}
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          className="object-contain transition-all duration-200"
-                        />
-                      </div>
-                      {partner.description && (
-                        <div className="absolute inset-0 flex items-center justify-center bg-black/75 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-lg p-6">
-                          <div className="text-center">
-                            <p className="font-semibold text-lg mb-2">{partner.name}</p>
-                            <p className="text-sm line-clamp-3">{partner.description}</p>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  )
-
-                  // If partner has a url, wrap the card in a Link so it's clickable
-                  if (partner.url) {
-                    return (
-                      <Link
-                        key={`${partner.name}-${index}`}
-                        href={partner.url}
-                        aria-label={`View ${partner.name} page`}
-                        className="flex-[0_0_auto] mx-6"
-                      >
-                        {card}
-                      </Link>
-                    )
-                  }
-
-                  return (
-                    <div key={`${partner.name}-${index}`}>{card}</div>
-                  )
-                })}
-              </div>
-            </div>
-          )}
-        </div>
-
-        <div className="mt-12 text-center">
-          <p className="text-sm text-gray-500">
-            Want to become a partner? <Link href="/partners" className="text-[#3faa4e] hover:underline">Learn more →</Link>
-          </p>
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
+          {paymentSolutions.map((solution, index) => (
+            <PaymentSolutionCard key={index} {...solution} />
+          ))}
         </div>
       </div>
     </section>
   )
-} 
+}

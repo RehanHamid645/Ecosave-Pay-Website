@@ -138,8 +138,7 @@ export default function ThankYouPage() {
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <Link href="/">
             <Button 
-              variant="outline" 
-              icon={Home} 
+              variant="outline"  
               iconPosition="left"
               size="lg"
             >

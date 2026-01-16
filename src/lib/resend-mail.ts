@@ -19,7 +19,7 @@ export async function sendMail({
     });
     
     const { data, error } = await resend.emails.send({
-      from: process.env.RESEND_FROM || 'Ecosave Gas and Power <onboarding@resend.dev>',
+      from: process.env.RESEND_FROM || 'Ecosave Pay <onboarding@resend.dev>',
       to,
       subject,
       html,

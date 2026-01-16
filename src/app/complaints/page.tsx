@@ -57,7 +57,7 @@ const ComplaintsPage: NextPage = () => {
               <section>
                 <h2 className="text-2xl font-bold tracking-tight text-gray-900">Introduction</h2>
                 <p className="text-lg leading-relaxed text-gray-600">
-                  Welcome to the Ecosave Gas and Power Ltd&apos;s (&quot;Ecosave&quot;) Complaints section.
+                  Welcome to the Ecosave Pay Ltd&apos;s (&quot;Ecosave&quot;) Complaints section.
                 </p>
               </section>
             </div>

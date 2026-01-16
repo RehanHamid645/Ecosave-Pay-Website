@@ -156,7 +156,7 @@ export default function PrivacyPage() {
             >
               <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
                 <p className="text-lg leading-relaxed text-gray-600">
-                  This privacy policy explains how Ecosave Gas and Power LTD collects, uses, and protects your personal information. 
+                  This privacy policy explains how Ecosave Pay LTD collects, uses, and protects your personal information. 
                   Our privacy documents are designed to make the information you need easy to understand and give you a better 
                   understanding of how we handle your data.
                 </p>
@@ -170,9 +170,9 @@ export default function PrivacyPage() {
                   If you have any specific questions about our privacy policy, our Data Protection Officer will be happy to help. You can reach us through:
                 </p>
                 <div className="mt-4 flex flex-col space-y-2 text-lg">
-                  <p>Full name: Mohammad Aslam</p>
-                  <a href="mailto:Info@ecosavegasandpower.com" className="text-[#3faa4e] hover:underline">
-                    Info@ecosavegasandpower.com
+                  <p>Full name: Mohammed Aslam</p>
+                  <a href="mailto:info@ecosavepay.com" className="text-[#3faa4e] hover:underline">
+                    info@ecosavepay.com
                   </a>
                   <p>Postal address: Lloyds House 18-22, Lloyd Street, Manchester, England, M2 5WA</p>
                 </div>

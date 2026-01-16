@@ -16,10 +16,11 @@ import ErrorBoundary from '@/components/shared/ErrorBoundary'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { GoogleTagManager } from '@next/third-parties/google';
 import QuoteBanner from '@/components/features/QuoteBanner'
+import {Roboto} from 'next/font/google'
 
 // Optimize font loading
 
-const inter = Lato({
+const roboto = Roboto({
   subsets: ['latin'],
   weight: ['400', '700'], 
   preload: true,
@@ -96,7 +97,7 @@ export default function RootLayout({
       </head>
       <GoogleAnalytics gaId="G-1RRD591LG2" />
       <GoogleTagManager gtmId="GTM-PH3KJ9LL" />
-      <body className={`${inter.className} h-full`}>
+      <body className={`${roboto.className} h-full`}>
         <ErrorBoundary>
           <Suspense>
             <HeroUIProvider>

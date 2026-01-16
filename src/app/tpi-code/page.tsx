@@ -15,7 +15,7 @@ export default function TPICodePage() {
           >
             <div className="space-y-6">
               <p className="text-lg leading-relaxed text-gray-600">
-                This website is owned and operated by Ecosave Gas and Power LTD. For information about the terms on which you can use this website, how data collected through this website is used or for information about Ecosave Gas and Power and its product and services, Please see the section below.
+                This website is owned and operated by Ecosave Pay LTD. For information about the terms on which you can use this website, how data collected through this website is used or for information about Ecosave Pay and its product and services, Please see the section below.
               </p>
               <p className="text-lg leading-relaxed text-gray-600">
                 Our legal documents are designed to de-mystify the legal aspects of our energy business, make the information you need easy to understand and give you a better understanding of our business.
