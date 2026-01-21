@@ -1,9 +1,13 @@
 'use client'
 import React from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
+import { useQuote } from '@/contexts/QuoteContext';
 import { ArrowUpRight, Zap, Network, Smartphone, CreditCard,LinkIcon,QrCode,Calendar} from 'lucide-react';
 import FAQSection from '@/components/features/FaqSection';
 import { useState } from 'react';
+import PaymentTeamSection from '@/components/features/PaymentTeamSection';
+import PaymentSolutionsSection from '@/components/features/FeaturesSection';
 // --- Shared Components ---
 
 // const WhitePillLogo = ({ src = '', alt = '', width = 120, height = 40 }) => (
@@ -22,8 +26,11 @@ import { useState } from 'react';
  * Section 1: Online Payments Hero
  * Matches the style of your EPOS hero with the green glow and background image.
  */
-const OnlinePaymentsHero = () => (
-  <section className="bg-black text-white py-24 px-6 overflow-hidden relative min-h-screen flex items-center">
+const OnlinePaymentsHero = () => {
+  const { openQuoteModal } = useQuote();
+  
+  return (
+  <section className="bg-black text-white py-12 md:py-24 px-6 overflow-hidden relative min-h-[70vh] md:min-h-screen flex items-center">
     <div className="absolute inset-0 w-full h-full z-0 pointer-events-none select-none">
       <Image
         src="/images/green-black-bg.png"
@@ -35,24 +42,28 @@ const OnlinePaymentsHero = () => (
     </div>
     <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#5ece6d] blur-[120px] rounded-full -mr-40 -mt-40 opacity-20 z-10" />
     
-    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-20">
+    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center relative z-20">
       <div>
-        <span className="inline-block bg-[#5ece6d]/20 text-[#5ece6d] border border-[#5ece6d]/30 px-4 py-1 rounded-full text-xs font-bold mb-6 tracking-widest uppercase">
+        <span className="inline-block bg-[#5ece6d]/20 text-[#5ece6d] border border-[#5ece6d]/30 px-4 py-1 rounded-full text-xs font-bold mb-4 md:mb-6 tracking-widest uppercase">
           Online Payments
         </span>
-        <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-[1.05] mb-8">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-tight md:leading-[1.05] mb-4 md:mb-8">
           Sell Anywhere With <br /> Seamless Payment <br /> Tech
         </h1>
-        <p className="text-gray-300 text-lg md:text-xl mb-10 max-w-xl leading-relaxed font-medium">
+        <p className="text-gray-300 text-base md:text-lg lg:text-xl mb-6 md:mb-10 max-w-xl leading-relaxed font-medium">
           Send payment links, create QR codes, or embed full checkout—powered by Ecosave Pays smart online solution.
         </p>
-        <div className="flex flex-wrap gap-4">
-          <button className="bg-[#6ec99c] text-black font-bold px-10 py-4 rounded-full hover:bg-white transition-all transform hover:scale-105">
+        <div className="flex flex-wrap gap-3 md:gap-4">
+          <Link href="/contact">
+          <button className="bg-[#6ec99c] text-black font-bold px-6 md:px-10 py-3 md:py-4 rounded-full hover:bg-white transition-all transform hover:scale-105 text-sm md:text-base">
             GET A QUOTE
           </button>
-          <button className="border-2 border-[#6ec99c] text-white font-bold px-10 py-4 rounded-full hover:bg-[#6ec99c]/10 transition-all">
-            OUR SERVICES
-          </button>
+          </Link>
+          <Link href="/SERVICES">
+            <button className="border-2 border-[#6ec99c] text-white font-bold px-6 md:px-10 py-3 md:py-4 rounded-full hover:bg-[#6ec99c]/10 transition-all text-sm md:text-base">
+              OUR SERVICES
+            </button>
+          </Link>
         </div>
         
         {/* <div className="mt-20">
@@ -68,10 +79,10 @@ const OnlinePaymentsHero = () => (
         </div> */}
       </div>
 
-      <div className="relative flex justify-center items-center">
+      <div className="relative hidden lg:flex justify-center items-center">
         <div className="w-full aspect-square relative">
             <Image 
-                src="/images/ecosave-pay-home-page/Card-machine.png" 
+                src="/images/ecosave-pay-home-page/online-payments-hero.png" 
                 alt="Payment Interface Mockup" 
                 fill 
                 className="object-contain"
@@ -80,7 +91,8 @@ const OnlinePaymentsHero = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 /**
  * Section 2: Why Choose Our Payment Gateway
@@ -450,6 +462,8 @@ export default function OnlinePaymentsPage() {
       <InstantPaymentsTabbed />
       <BuiltToIntegrate />
       <DeveloperPortal />
+      <PaymentTeamSection/>
+      <PaymentSolutionsSection/>
       <FAQSection/>
     </main>
   );

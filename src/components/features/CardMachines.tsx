@@ -81,7 +81,7 @@ export default function CardMachines() {
     <section className="bg-gradient-to-b from-black via-[#063b1d] to-black py-24 text-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <Link href="/payments/epos-systems">
+          <Link href="/FaceToFace">
             <button className="mb-8 bg-white text-black font-bold px-8 py-3 rounded-full text-xs tracking-[0.15em] hover:bg-gray-100 transition">
               → FACE TO FACE PAYMENTS
             </button>

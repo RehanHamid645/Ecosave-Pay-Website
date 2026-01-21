@@ -1,19 +1,18 @@
 "use client"
 
 import * as React from "react"
-import { Mail, Phone, MapPin, ArrowRight } from "lucide-react"
+import { Mail, Phone, MapPin, ArrowRight, Clock } from "lucide-react"
 import { cn } from "@/lib/utils"
 import Button from "@/components/shared/Button"
 import { useState } from "react"
 import Image from "next/image"
-/* import CalendarPicker from "@/components/shared/Calendar"
-import { DateValue } from "@internationalized/date" */
+
 
 const Input = ({ className, ...props }: React.InputHTMLAttributes<HTMLInputElement>) => {
   return (
     <input
       className={cn(
-        "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+        "flex h-12 w-full rounded-xl border border-black bg-white/5 px-4 py-2 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#5ece6d] transition-all",
         className
       )}
       {...props}
@@ -25,7 +24,7 @@ const Textarea = ({ className, ...props }: React.TextareaHTMLAttributes<HTMLText
   return (
     <textarea
       className={cn(
-        "flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+        "flex min-h-[100px] w-full rounded-xl border border-black bg-white/5 px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#5ece6d] transition-all",
         className
       )}
       {...props}
@@ -33,44 +32,23 @@ const Textarea = ({ className, ...props }: React.TextareaHTMLAttributes<HTMLText
   )
 }
 
-interface ContactInfoProps {
-  icon: React.ReactNode
-  title: string
-  details: string
-  className?: string
-}
-
 const contactInfo = [
   {
-    icon: <Phone className="text-white h-6 w-6" />,
+    icon: <Phone className="h-6 w-6" />,
     title: "Phone",
     details: "0161 814 9299",
   },
   {
-    icon: <Mail className="text-white h-6 w-6" />,
+    icon: <Mail className="h-6 w-6" />,
     title: "Email",
     details: "info@ecosavepay.com",
   },
   {
-    icon: <MapPin className="text-white h-6 w-6" />,
+    icon: <MapPin className="h-6 w-6" />,
     title: "Office",
-    details: "Lloyds House 18-22, Lloyd Street, Manchester, England, M2 5WA",
+    details: "Lloyds House 18-22, Lloyd Street, Manchester, M2 5WA",
   },
 ]
-
-function ContactInfo({ icon, title, details, className }: ContactInfoProps) {
-  return (
-    <div className={cn("flex items-start gap-4", className)}>
-      <div className="rounded-xl bg-[#3faa4e]/10 p-3 text-[#3faa4e]">
-        {icon}
-      </div>
-      <div>
-        <h3 className="font-semibold text-base text-white">{title}</h3>
-        <p className="mt-1.5 text-sm text-white">{details}</p>
-      </div>
-    </div>
-  )
-}
 
 export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -78,9 +56,7 @@ export function ContactSection() {
     type: 'success' | 'error' | null
     message: string | null
   }>({ type: null, message: null })
-/*   const [selectedDate, setSelectedDate] = useState<DateValue | null>(null)
-  const [selectedTime, setSelectedTime] = useState<string | undefined>(undefined)
- */
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
@@ -91,36 +67,23 @@ export function ContactSection() {
       const formData = new FormData(form)
       const data = Object.fromEntries(formData.entries())
 
- /*      const formattedDate = selectedDate ? selectedDate.toString() : null */
-      const finalData = { 
-        ...data, 
-/*         preferredDate: formattedDate,
-        preferredTime: selectedTime */
-      }
-
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(finalData),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
       })
 
-      const result = await response.json()
-
-      if (!response.ok) {
-        throw new Error(result.error || 'Failed to send message')
-      }
+      if (!response.ok) throw new Error('Failed to send message')
 
       setSubmitStatus({
         type: 'success',
-        message: 'Message sent successfully! We\'ll get back to you soon.',
+        message: 'Message sent successfully!',
       })
       form.reset()
     } catch (error) {
       setSubmitStatus({
         type: 'error',
-        message: error instanceof Error ? error.message : 'Failed to send message',
+        message: 'Something went wrong. Please try again.',
       })
     } finally {
       setIsSubmitting(false)
@@ -128,158 +91,136 @@ export function ContactSection() {
   }
 
   return (
-    <section className="w-full py-16 md:py-24 relative overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none select-none">
-        <Image
-          src="/images/green-black-bg.png"
-          alt="Green Gradient Background"
-          fill
-          style={{objectFit: 'cover'}}
-          priority
-          className="z-0 opacity-90"
-        />
-      </div>
+    <section className="bg-black text-white pt-24 pb-12 px-6 overflow-hidden relative">
+      {/* Background Glows */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#5ece6d] blur-[150px] rounded-full -mr-40 -mt-40 opacity-20 z-0" />
       
-      <div className="container px-4 md:px-6 relative z-10">
-        <div className="grid max-w-7xl gap-12 lg:grid-cols-2">
-          {/* Contact Information */}
-          <div className="mt-12 space-y-8">
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start mb-24">
+          
+          {/* Left Side: Text and Info */}
+          <div className="space-y-12">
             <div className="space-y-6">
-              <h2 className="text-6xl text-white font-bold tracking-tighter sm:text-6xl">
-                Get in Touch
+              <span className="inline-block bg-[#5ece6d] text-black px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase">
+                Contact Us
+              </span>
+              <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[1.05]">
+                Get In Touch <br /> With Our Experts
               </h2>
-              <p className="text-lg text-white max-w-[85%]">
-                Have questions about our services? Our team is here to help you find the best utility deals for your business.
+              <p className="text-gray-400 text-lg md:text-xl font-medium max-w-lg leading-relaxed">
+                Have questions? We're here to help you find the best payment and utility solutions for your business.
               </p>
             </div>
 
-            <div className="space-y-8">
-              {contactInfo.map((info) => (
-                <ContactInfo key={info.title} {...info} />
+            <div className="grid gap-8">
+              {contactInfo.map((info, idx) => (
+                <div key={idx} className="flex items-center gap-6 group">
+                  <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-[#5ece6d] group-hover:bg-[#5ece6d] group-hover:text-black transition-all duration-300">
+                    {info.icon}
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">{info.title}</p>
+                    <p className="text-xl font-bold text-white">{info.details}</p>
+                  </div>
+                </div>
               ))}
             </div>
 
-            {/* Operating Hours */}
-            <div className="rounded-xl border p-6 bg-muted/50">
-              <h3 className="text-white font-semibold text-base">Operating Hours</h3>
-              <div className="mt-4 space-y-3 text-sm text-white">
-                <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
-                <p>Saturday, Sunday & Bank Holidays: Closed</p>
+            {/* Business Hours Card */}
+            <div className="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 max-w-sm">
+              <div className="flex items-center gap-2 mb-4">
+                <Clock className="text-[#5ece6d] h-5 w-5" />
+                <h3 className="text-[#5ece6d] text-lg font-black uppercase tracking-tighter">Operating Hours</h3>
+              </div>
+              <div className="space-y-2 text-sm font-bold">
+                <div className="flex justify-between">
+                  <span className="text-gray-400 uppercase">Monday — Thursday</span>
+                  <span>9:00 — 17:30</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-400 uppercase">Friday</span>
+                  <span>9:00 — 17:00</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-400 uppercase">Saturday — Sunday</span>
+                  <span className="text-[#5ece6d]">Closed</span>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="rounded-xl border bg-black p-8">
+          {/* Right Side: Form Card */}
+          <div className="bg-[#1a1c23] border border-white/5 p-10 md:p-14 rounded-[3rem] shadow-2xl">
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid gap-5 sm:grid-cols-2">
-                <div className="space-y-2.5">
-                  <label htmlFor="firstName" className="text-sm font-medium text-white leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                    First name
-                  </label>
-                  <Input 
-                    id="firstName" 
-                    name="firstName"
-                    placeholder="Enter your first name" 
-                    required
-                  />
+              <div className="grid gap-6 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">First Name</label>
+                  <Input name="firstName"  required />
                 </div>
-                <div className="space-y-2.5">
-                  <label htmlFor="lastName" className="text-sm font-medium text-white leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                    Last name
-                  </label>
-                  <Input 
-                    id="lastName" 
-                    name="lastName"
-                    placeholder="Enter your last name" 
-                    required
-                  />
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">Last Name</label>
+                  <Input name="lastName"  required />
                 </div>
               </div>
-              <div className="space-y-2.5">
-                <label htmlFor="businessName" className="text-sm font-medium text-white leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                  Business Name
-                </label>
-                <Input 
-                  id="businessName" 
-                  name="businessName"
-                  placeholder="Enter your business name" 
-                  required
-                />
+              
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">Business Name</label>
+                <Input name="businessName" required />
               </div>
-              <div className="space-y-2.5">
-                <label htmlFor="email" className="text-sm font-medium text-white leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                  Email
-                </label>
-                <Input 
-                  id="email" 
-                  name="email"
-                  type="email" 
-                  placeholder="Enter your email" 
-                  required
-                />
+
+              <div className="grid gap-6 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">Email Address</label>
+                  <Input name="email" type="email" required />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">Phone Number</label>
+                  <Input name="phone" type="tel"  />
+                </div>
               </div>
-              <div className="space-y-2.5">
-                <label htmlFor="phone" className="text-sm font-medium text-white leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                  Phone number
-                </label>
-                <Input 
-                  id="phone" 
-                  name="phone"
-                  type="tel" 
-                  placeholder="Enter your phone number" 
-                />
+
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">Message</label>
+                <Textarea name="message" placeholder="How can we help you?" required />
               </div>
-{/*               <CalendarPicker
-                label="Preferred Contact Date"
-                onChange={(date, time) => {
-                  setSelectedDate(date)
-                  setSelectedTime(time)
-                }}
-                value={selectedDate}
-                selectedTime={selectedTime}
-              /> */}
-              <div className="space-y-2.5">
-                <label htmlFor="message" className="text-sm font-medium text-white leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                  Message
-                </label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  placeholder="How can we help you?"
-                  className="min-h-[130px] resize-none"
-                  required
-                />
-              </div>
+
               {submitStatus.message && (
-                <div
-                  className={cn(
-                    "p-3 rounded-md text-sm",
-                    submitStatus.type === 'success' 
-                      ? "bg-green-100 text-green-800" 
-                      : "bg-red-100 text-red-800"
-                  )}
-                >
+                <div className={cn(
+                  "p-4 rounded-xl text-sm font-bold text-center",
+                  submitStatus.type === 'success' ? "bg-[#5ece6d]/20 text-[#5ece6d]" : "bg-red-500/20 text-red-400"
+                )}>
                   {submitStatus.message}
                 </div>
               )}
+
               <Button 
                 type="submit"   
-                className="w-full"
+                className="w-full h-14 bg-[#5ece6d] text-black font-black text-lg rounded-full hover:bg-white hover:scale-[1.02] transition-all duration-300 border-none"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? (
-                  "Sending..."
-                ) : (
-                  <>
-                    Send Message
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </>
+                {isSubmitting ? "SENDING..." : (
+                  <span className="flex items-center justify-center gap-2">
+                    SEND MESSAGE <ArrowRight size={20} />
+                  </span>
                 )}
               </Button>
             </form>
           </div>
+        </div>
+
+        {/* --- Google Maps Section --- */}
+        <div className="w-full h-[450px] rounded-[3rem] overflow-hidden border border-white/10 relative shadow-2xl">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2374.3228308466634!2d-2.247161723554044!3d53.48057206411442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bb1c0ba0f970d%3A0xc3f98233df4c1482!2sLloyds%20House%2C%2018-22%20Lloyd%20St%2C%20Manchester%20M2%205WA!5e0!3m2!1sen!2suk!4v1705000000000!5m2!1sen!2suk"
+            width="100%"
+            height="100%"
+            style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%)' }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+          {/* Overlay to soften the map colors into the theme */}
+          <div className="absolute inset-0 pointer-events-none border-[20px] border-black/5 rounded-[3rem]" />
         </div>
       </div>
     </section>

@@ -5,7 +5,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Providers } from "./providers";
-import Trustpilot from "@/components/features/Trustpilot";
+// import Trustpilot from "@/components/features/Trustpilot";
 import { HeroUIProvider } from "@heroui/react"
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from "@vercel/speed-insights/react"
@@ -15,8 +15,9 @@ import Loading from './loading'
 import ErrorBoundary from '@/components/shared/ErrorBoundary'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { GoogleTagManager } from '@next/third-parties/google';
-import QuoteBanner from '@/components/features/QuoteBanner'
 import {Roboto} from 'next/font/google'
+import { QuoteProvider } from '@/contexts/QuoteContext';
+
 
 // Optimize font loading
 
@@ -60,7 +61,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className="h-full bg-black">
       <head>
         <link
           rel="preconnect"
@@ -97,28 +98,19 @@ export default function RootLayout({
       </head>
       <GoogleAnalytics gaId="G-1RRD591LG2" />
       <GoogleTagManager gtmId="GTM-PH3KJ9LL" />
-      <body className={`${roboto.className} h-full`}>
+      <body className={`${roboto.className} h-full bg-black`}>
         <ErrorBoundary>
           <Suspense>
             <HeroUIProvider>
+              <QuoteProvider>
                 <Providers>
-                <Suspense fallback={<div className="h-20 bg-white" />}>
+                <Suspense fallback={<div className="h-20 bg-black" />}>
                   <ErrorBoundary>
                   <Header />
                   </ErrorBoundary>
                 </Suspense>
 
-                <Suspense fallback={<div className="h-[72px]" />}>
-                  <ErrorBoundary>
-                  <Trustpilot />
-                  </ErrorBoundary>
-                </Suspense>
-
-                <Suspense fallback={<div className="h-[72px]" />}>
-                  <ErrorBoundary>
-                  <QuoteBanner />
-                  </ErrorBoundary>
-                </Suspense>
+                
 
                 <div className={`flex-grow`}>
                   <ErrorBoundary>
@@ -139,7 +131,11 @@ export default function RootLayout({
                   <Analytics /> 
                   <SpeedInsights />
                 </Suspense>
+
+                {/* Global Quote Modal */}
+           
               </Providers>
+              </QuoteProvider>
             </HeroUIProvider>
           </Suspense>
         </ErrorBoundary>

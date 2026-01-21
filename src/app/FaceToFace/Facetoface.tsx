@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import StillHaveQuestions from '@/components/shared/StillHaveQuestions';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useQuote } from '@/contexts/QuoteContext';
 import { 
   Check, 
   ChevronDown, 
@@ -38,19 +39,32 @@ const WhitePillLogo = ({
   imgHeight = 32,
 }: WhitePillLogoProps) => (
   <div
-    className="bg-white rounded-full flex items-center justify-center shadow-sm px-8"
-    style={{ width: `${width}px`, height: `${height}px`, minWidth: `${width}px` }}
+    className="bg-white rounded-full flex items-center justify-center shadow-sm px-2 md:px-8"
+    style={{ 
+      width: window.innerWidth < 768 ? `${width * 0.35}px` : `${width}px`, 
+      height: window.innerWidth < 768 ? `${height * 0.7}px` : `${height}px`, 
+      minWidth: window.innerWidth < 768 ? `${width * 0.35}px` : `${width}px` 
+    }}
   >
     {src ? (
-      <Image src={src} alt={alt} width={imgWidth} height={imgHeight} className="object-contain" />
+      <Image 
+        src={src} 
+        alt={alt} 
+        width={window.innerWidth < 768 ? imgWidth * 0.4 : imgWidth} 
+        height={window.innerWidth < 768 ? imgHeight * 0.4 : imgHeight} 
+        className="object-contain" 
+      />
     ) : (
       <span className="text-gray-400 text-xs font-semibold">Logo</span>
     )}
   </div>
 );
 
-const HeroSection = () => (
-  <section className="bg-black text-white py-24 px-6 overflow-hidden relative">
+const HeroSection = () => {
+  const { openQuoteModal } = useQuote();
+  
+  return (
+  <section className="bg-black text-white py-12 md:py-24 px-6 overflow-hidden relative">
     {/* Green gradient image background */}
     <div className="absolute inset-0 w-full h-full z-0 pointer-events-none select-none">
       <Image
@@ -65,44 +79,46 @@ const HeroSection = () => (
     </div>
     <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#5ece6d] blur-[120px] rounded-full -mr-40 -mt-40 opacity-20 z-10" />
     
-  <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-20">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center relative z-20">
       <div>
-        <span className="inline-block bg-[#5ece6d] text-black px-4 py-1 rounded-full text-xs font-bold mb-6 tracking-widest uppercase">
+        <span className="hidden md:inline-block bg-[#5ece6d] text-black px-4 py-1 rounded-full text-xs font-bold mb-4 md:mb-6 tracking-widest uppercase">
           Face to Face Payments
         </span>
-        <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-[1.05] mb-8 mt-20">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-tight md:leading-[1.05] mb-4 md:mb-8 mt-16 sm:mt-12 md:mt-20">
           Get Paid Faster with <br />
           Ecosave Pay Card <br /> Machines
         </h1>
-        <p className="text-gray-400 text-lg md:text-xl mb-10 max-w-xl leading-relaxed font-medium">
+        <p className="text-gray-400 text-base md:text-lg lg:text-xl mb-6 md:mb-10 max-w-xl leading-relaxed font-medium">
           Equip your business with reliable, high-performance card machines designed for every environment — 
           from retail and hospitality to mobile and self-service setups.
         </p>
-        <div className="flex flex-wrap gap-4">
-          <button className="bg-[#5ece6d] text-black font-bold px-10 py-4 rounded-full hover:bg-white transition-all transform hover:scale-105">
+        <div className="flex flex-wrap gap-3 md:gap-4">
+          <Link href="/contact">
+          <button className="bg-[#5ece6d] text-black font-bold px-6 md:px-10 py-3 md:py-4 rounded-full hover:bg-white transition-all transform hover:scale-105 text-sm md:text-base">
             GET A QUOTE
           </button>
-          <button className="border-2 border-white/20 text-white font-bold px-10 py-4 rounded-full hover:bg-white/10 transition-all">
-            OUR SERVICES
-          </button>
+          </Link>
+          <Link href="/SERVICES">
+            <button className="border-2 border-white/20 text-white font-bold px-6 md:px-10 py-3 md:py-4 rounded-full hover:bg-white/10 transition-all text-sm md:text-base">
+              OUR SERVICES
+            </button>
+          </Link>
         </div>
         
-        <div className="mt-16 pt-8 border-t border-white/10">
-          <p className="text-xs font-bold text-gray-500 tracking-widest uppercase mb-6">Accept all type of payments</p>
-          <div className="flex gap-4 items-center flex-wrap overflow-x-auto pb-4">
+        <div className="mt-8 md:mt-16 pt-6 md:pt-8 border-t border-white/10">
+          <p className="text-xs font-bold text-gray-500 tracking-widest uppercase mb-4 md:mb-6">Accept all type of payments</p>
+          <div className="grid grid-cols-3 md:flex gap-1.5 md:gap-4 items-center pb-4 md:ml-0">
             <WhitePillLogo src="/images/ecosave-pay-home-page/Apple_Pay_logo.svg.png" alt="Apple Pay Logo" />
             <WhitePillLogo src="/images/ecosave-pay-home-page/Alipay_logo.svg.png" alt="Alipay Logo" />
             <WhitePillLogo src="/images/ecosave-pay-home-page/Visa_Inc._logo.svg.png" alt ="Visa Logo" />
             <WhitePillLogo src="/images/ecosave-pay-home-page/Google_Pay_Logo.svg.png" alt="Google Pay Logo" />
-          </div>
-          <div className="flex gap-4 items-center flex-wrap overflow-x-auto pb-4 mt-2">
             <WhitePillLogo src="/images/ecosave-pay-home-page/wechat.png" alt="WeChat Pay Logo" width={240} height={40} imgWidth={45} imgHeight={40} />
             <WhitePillLogo src="/images/ecosave-pay-home-page/samsung-pay-logo.png" alt="Samsung Pay Logo" imgHeight={120} imgWidth={110} />
           </div>
         </div>
       </div>
 
-      <div className="relative flex justify-center items-center">
+      <div className="relative hidden lg:flex justify-center items-center">
         <Image
           src="/images/ecosave-pay-home-page/Card-machine.png"
           alt="Card machine"
@@ -114,7 +130,8 @@ const HeroSection = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 const FeatureGrid = () => (
   <section className="bg-[#5ece6d] py-24 px-6">
@@ -202,7 +219,7 @@ const TerminalList = () => {
                   alt={item.name} 
                   width={item.imgWidth || 400} 
                   height={item.imgHeight || 400} 
-                  className="object-contain mx-auto" 
+                  className={`object-contain ${item.name === "PAX A35" ? 'scale-125 -ml-8 md:scale-100 md:ml-0 mx-auto' : 'mx-auto'}`}
                 />
               </div>
               <div className={idx % 2 !== 0 ? 'md:order-1' : ''}>
@@ -228,7 +245,10 @@ const TerminalList = () => {
   );
 };
 
-const AddonsSection = () => (
+const AddonsSection = () => {
+  const { openQuoteModal } = useQuote();
+  
+  return (
   <section className="bg-black text-white py-24 px-6">
     <div className="max-w-7xl mx-auto">
       <div className="text-center mb-20">
@@ -256,13 +276,18 @@ const AddonsSection = () => (
           <p className="text-gray-400 font-medium">Easy setup, instant payment processing</p>
         </div>
         <div className="flex gap-4">
-          <button className="bg-[#5ece6d] text-black font-bold px-8 py-3 rounded-xl hover:opacity-90 transition">GET A QUOTE</button>
-          <button className="border border-white/20 text-white font-bold px-8 py-3 rounded-xl hover:bg-white/10 transition">OUR SERVICES</button>
+          <Link href="/contact">
+            <button className="bg-[#5ece6d] text-black font-bold px-8 py-3 rounded-xl hover:opacity-90 transition">GET A QUOTE</button>
+          </Link>
+          <Link href="/SERVICES">
+            <button className="border border-white/20 text-white font-bold px-8 py-3 rounded-xl hover:bg-white/10 transition">OUR SERVICES</button>
+          </Link>
         </div>
       </div>
     </div>
   </section>
-);
+  );
+};
 
 // --- NEW SMARTER PROCESSING SECTION (Switch to Smarter Section) ---
 const SmarterProcessingSection = () => (

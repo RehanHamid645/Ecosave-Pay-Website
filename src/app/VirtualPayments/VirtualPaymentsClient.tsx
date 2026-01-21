@@ -1,7 +1,9 @@
 'use client'
 import React, { useState } from 'react';
 import StillHaveQuestions from '@/components/shared/StillHaveQuestions';
+import Link from 'next/link';
 import Image from 'next/image';
+import { useQuote } from '@/contexts/QuoteContext';
 import { 
   Check, 
   Zap, 
@@ -12,7 +14,7 @@ import {
   ShieldCheck,
   MousePointerClick
 } from 'lucide-react';
-
+import PaymentTeamSection from '@/components/features/PaymentTeamSection';
 // --- Shared Components ---
 type WhitePillLogoProps = {
   src?: string;
@@ -32,11 +34,21 @@ const WhitePillLogo = ({
   imgHeight = 32,
 }: WhitePillLogoProps) => (
   <div
-    className="bg-white rounded-full flex items-center justify-center shadow-sm px-8"
-    style={{ width: `${width}px`, height: `${height}px`, minWidth: `${width}px` }}
+    className="bg-white rounded-full flex items-center justify-center shadow-sm px-2 md:px-8"
+    style={{ 
+      width: window.innerWidth < 768 ? `${width * 0.35}px` : `${width}px`, 
+      height: window.innerWidth < 768 ? `${height * 0.7}px` : `${height}px`, 
+      minWidth: window.innerWidth < 768 ? `${width * 0.35}px` : `${width}px` 
+    }}
   >
     {src ? (
-      <Image src={src} alt={alt} width={imgWidth} height={imgHeight} className="object-contain" />
+      <Image 
+        src={src} 
+        alt={alt} 
+        width={window.innerWidth < 768 ? imgWidth * 0.4 : imgWidth} 
+        height={window.innerWidth < 768 ? imgHeight * 0.4 : imgHeight} 
+        className="object-contain" 
+      />
     ) : (
       <span className="text-gray-400 text-xs font-semibold">Logo</span>
     )}
@@ -45,8 +57,11 @@ const WhitePillLogo = ({
 
 // --- Sections ---
 
-const VirtualHero = () => (
-  <section className="bg-black text-white py-24 px-6 overflow-hidden relative">
+const VirtualHero = () => {
+  const { openQuoteModal } = useQuote();
+  
+  return (
+  <section className="bg-black text-white py-12 md:py-24 px-6 overflow-hidden relative">
     {/* Background Image Placeholder */}
     <div className="absolute inset-0 w-full h-full z-0 pointer-events-none select-none opacity-40">
       <Image
@@ -59,44 +74,46 @@ const VirtualHero = () => (
       />
     </div>
     
-    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-20">
+    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center relative z-20">
       <div>
-        <span className="inline-block bg-[#5ece6d] text-black px-4 py-1 rounded-full text-xs font-bold mb-6 tracking-widest uppercase">
+        <span className="hidden md:inline-block bg-[#5ece6d] text-black px-4 py-1 rounded-full text-xs font-bold mb-4 md:mb-6 tracking-widest uppercase">
           Virtual Terminals
         </span>
-        <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-[1.05] mb-8 mt-20">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-tight md:leading-[1.05] mb-4 md:mb-8 mt-16 sm:mt-12 md:mt-20">
           Instant Phone <br /> 
           Payments Made <br /> 
           Simple
         </h1>
-        <p className="text-gray-400 text-lg md:text-xl mb-10 max-w-xl leading-relaxed font-medium">
+        <p className="text-gray-400 text-base md:text-lg lg:text-xl mb-6 md:mb-10 max-w-xl leading-relaxed font-medium">
           Take secure card payments over the phone or by email. No hardware required — just log in and start getting paid instantly.
         </p>
-        <div className="flex flex-wrap gap-4">
-          <button className="bg-[#5ece6d] text-black font-bold px-10 py-4 rounded-full hover:bg-white transition-all transform hover:scale-105">
+        <div className="flex flex-wrap gap-3 md:gap-4">
+          <Link href="/contact">
+          <button className="bg-[#5ece6d] text-black font-bold px-6 md:px-10 py-3 md:py-4 rounded-full hover:bg-white transition-all transform hover:scale-105 text-sm md:text-base">
             GET A QUOTE
           </button>
-          <button className="border-2 border-white/20 text-white font-bold px-10 py-4 rounded-full hover:bg-white/10 transition-all">
-            OUR SERVICES
-          </button>
+          </Link>
+          <Link href="/SERVICES">
+            <button className="border-2 border-white/20 text-white font-bold px-6 md:px-10 py-3 md:py-4 rounded-full hover:bg-white/10 transition-all text-sm md:text-base">
+              OUR SERVICES
+            </button>
+          </Link>
         </div>
         
-        <div className="mt-16 pt-8 border-t border-white/10">
-          <p className="text-xs font-bold text-gray-500 tracking-widest uppercase mb-6">Accept all types of payment</p>
-          <div className="flex gap-4 items-center flex-wrap">
+        <div className="mt-8 md:mt-16 pt-6 md:pt-8 border-t border-white/10">
+          <p className="text-xs font-bold text-gray-500 tracking-widest uppercase mb-4 md:mb-6">Accept all types of payment</p>
+          <div className="grid grid-cols-3 md:flex gap-1.5 md:gap-4 items-center pb-4 md:ml-0">
             <WhitePillLogo src="/images/ecosave-pay-home-page/Apple_Pay_logo.svg.png" alt="Apple Pay" height={40} />
             <WhitePillLogo src="/images/ecosave-pay-home-page/Google_Pay_Logo.svg.png" alt="Google Pay" height={40} />
             <WhitePillLogo src="/images/ecosave-pay-home-page/Visa_Inc._logo.svg.png" alt ="Visa" height={40} />
             <WhitePillLogo src="/images/ecosave-pay-home-page/Diners_Club_Logo3.svg.png" alt ="Diners Club" height={40} />
-          </div>
-          <div className="flex gap-4 items-center flex-wrap overflow-x-auto pb-4 mt-2">
             <WhitePillLogo src="/images/ecosave-pay-home-page/wechat.png" alt="WeChat Pay Logo" width={240} height={40} imgWidth={40} imgHeight={30} />
             <WhitePillLogo src="/images/ecosave-pay-home-page/samsung-pay-logo.png" alt="Samsung Pay Logo" height={40} imgHeight={110} imgWidth={110} />
           </div>
         </div>
       </div>
 
-      <div className="relative flex justify-center">
+      <div className="relative hidden lg:flex justify-center">
         {/* Payment Form Image - moved even higher */}
         <div className="w-full -mt-44 flex justify-center">
           <Image
@@ -111,27 +128,27 @@ const VirtualHero = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 const RemotePaymentsInfo = () => (
   <section className="bg-white py-24 px-6">
     <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-      <div className="relative h-[500px] w-full bg-gray-100 rounded-[2.5rem] overflow-hidden">
-        <Image
-          src="/images/ecosave-pay-home-page/woman-on-laptop2.png"
-          alt="Professional woman using laptop"
-          fill
-          style={{objectFit: 'cover'}}
-          className="object-cover"
-          priority
-        />
-      </div>
-      
       <div>
         <p className="text-[#5ece6d] font-bold text-sm tracking-widest uppercase mb-4">What is a Virtual Terminal</p>
         <h2 className="text-4xl md:text-5xl font-black text-black tracking-tighter leading-tight mb-8">
           Remote Payments <br /> Made Easy
         </h2>
+        <div className="relative h-[500px] w-full bg-gray-100 rounded-[2.5rem] overflow-hidden mb-8">
+          <Image
+            src="/images/ecosave-pay-home-page/woman-on-laptop2.png"
+            alt="Professional woman using laptop"
+            fill
+            style={{objectFit: 'cover'}}
+            className="object-cover"
+            priority
+          />
+        </div>
         <p className="text-gray-600 text-lg font-medium mb-10 leading-relaxed">
           A virtual payment terminal is a secure online card reader that works from any internet-connected device. 
           Ideal for phone orders and remote payments, it lets you accept card transactions instantly without 
@@ -243,9 +260,11 @@ const SimplifySection = () => (
         </div>
         
         <div className="mt-12">
+          <Link href="#VirtualFAQ">
             <button className="bg-[#5ece6d] text-black font-bold px-10 py-4 rounded-full">
                 LEARN MORE
             </button>
+          </Link>
         </div>
       </div>
 
@@ -278,7 +297,7 @@ const VirtualFAQ = () => {
   
 
   return (
-    <section className="bg-white py-24 px-6">
+    <section id="VirtualFAQ" className="bg-white py-24 px-6">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-black text-black tracking-tighter mb-4">Common Questions</h2>
@@ -319,6 +338,7 @@ export default function VirtualTerminalPage() {
       <RemotePaymentsInfo />
       <BuiltForNeeds />
       <SimplifySection />
+      <PaymentTeamSection />
       <VirtualFAQ />
     </main>
   );

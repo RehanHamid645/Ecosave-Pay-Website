@@ -9,7 +9,7 @@ export default function OnlineVirtualSection() {
     {
       title: 'Online Checkout',
       desc: 'Effortless e-commerce integration. Deliver quick, mobile-optimized checkouts...',
-      bg: 'bg-gray-100',
+      bg: 'border border-black',
     },
     {
       title: 'Payment Links',
@@ -27,7 +27,7 @@ export default function OnlineVirtualSection() {
     <section className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
-          <Link href="/payments/online-gateway">
+          <Link href="/VirtualPayments">
             <button className="mb-6 bg-black text-white font-semibold px-6 py-2 rounded-full">
               → ONLINE & VIRTUAL PAYMENTS
             </button>

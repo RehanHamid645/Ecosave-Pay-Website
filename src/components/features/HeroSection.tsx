@@ -3,30 +3,31 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useQuote } from '@/contexts/QuoteContext';
 
 export default function HeroSection() {
+  const { openQuoteModal } = useQuote();
   return (
 <section className="relative bg-[url(/images/green-black-bg.png)] pt-20 lg:pt-32 pb-4 lg:pb-6">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
 
         {/* Hero Image */}
-        <div className="pt-40 flex justify-center lg:justify-start">
+        <div className="hidden lg:flex pt-40 justify-center lg:justify-start -ml-20 -mt-28">
           <Image
             src="/images/payment_bg.png"
             alt="Payment graphic"
-            width={1400}
-            height={1500}
-            className="object-contain max-w-[1900px] h-auto drop-shadow-xl"
+            width={1800}
+            height={1900}
+            className="object-contain max-w-[2000px] h-auto drop-shadow-xl"
             priority
           />
         </div>
 
         {/* Hero Text */}
-        <div className="text-white">
+        <div className="text-white mt-8 sm:mt-0 lg:-mt-28">
           <h1
-            className="font-bold font-extrabold tracking-tight"
+            className="font-bold font-extrabold tracking-tight text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
             style={{
-              fontSize: "clamp(3.5rem, 5.5vw, 3.5rem)",
               lineHeight: 1.05,
               letterSpacing: "-0.04em",
             }}
@@ -48,17 +49,18 @@ export default function HeroSection() {
           <div className="mt-10 flex flex-col sm:flex-row gap-4">
 
             {/* OUTLINE BUTTON — GET A QUOTE */}
-            <Link
-              href="/contact"
+            <Link href="/contact">
+            <button
               className="px-10 py-4 rounded-full border-4 border-white text-lg font-semibold text-white hover:bg-white hover:text-black transition"
             >
               GET A QUOTE
+            </button>
             </Link>
 
             {/* SOLID GREEN BUTTON — START SAVING NOW */}
             <Link
               href="/contact"
-              className="px-10 py-4 rounded-full bg-[#5ece6d] text-lg font-semibold text-white hover:bg-[#4fc45e] transition"
+              className="px-10 py-4 pt-5 pb-3 rounded-full bg-[#5ece6d] text-lg font-semibold text-white hover:bg-[#4fc45e] transition"
             >
               START SAVING NOW
             </Link>
@@ -75,7 +77,7 @@ export default function HeroSection() {
               href="https://ecosavegasandpower.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-20 h-20 rounded-2xl bg-white flex items-center justify-center"
+              className="w-20 h-20 rounded-2xl bg-white flex items-center justify-center hover:bg-[#5ece6d] hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-2xl cursor-pointer"
             >
               <Image
                 src="/images/lightning-icon.png"

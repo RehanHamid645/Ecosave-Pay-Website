@@ -1,13 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
-import FAQSection from '@/components/features/FAQSection';
+import FAQSection from '@/components/features/FaqSection';
+import PaymentTeamSection from '@/components/features/PaymentTeamSection';
 
-// --- Sub-components for About Page ---
-
-/**
- * Section 1: Bento Grid Layout
- * Features the dark theme with radial glow and a 3-part grid.
- */
 const RedefiningPayments = () => (
   <section className="bg-black text-white py-24 px-6 overflow-hidden relative min-h-[800px] flex items-center">
     {/* Background Glow Effect */}
@@ -30,13 +25,34 @@ const RedefiningPayments = () => (
       {/* Bento Grid Layout */}
       <div className="grid grid-cols-2 gap-4 w-full h-full mt-48">
         {/* Top Feature Box */}
-        <div className="col-span-2 aspect-[16/8] bg-[#d9d9d9] rounded-[2.5rem] relative overflow-hidden" />
+        <div className="col-span-2 aspect-[16/8] bg-[#d9d9d9] rounded-[2.5rem] relative overflow-hidden">
+          <Image
+            src="/images/ecosave-pay-home-page/ep-office(4).png"
+            alt="EcoSave Pay Payment Solutions"
+            fill
+            className="object-cover"
+          />
+        </div>
         
         {/* Bottom Left Box */}
-        <div className="aspect-square bg-[#d9d9d9] rounded-[2.5rem] relative overflow-hidden" />
+        <div className="aspect-square bg-[#d9d9d9] rounded-[2.5rem] relative overflow-hidden">
+          <Image
+            src="/images/ecosave-pay-home-page/ep-office(2).png"
+            alt="EcoSave Pay Office"
+            fill
+            className="object-cover"
+          />
+        </div>
         
         {/* Bottom Right Box */}
-        <div className="aspect-square bg-[#d9d9d9] rounded-[2.5rem] relative overflow-hidden" />
+        <div className="aspect-square bg-[#d9d9d9] rounded-[2.5rem] relative overflow-hidden">
+          <Image
+            src="/images/ecosave-pay-home-page/ep-office(3).png"
+            alt="EcoSave Pay Payment Terminal"
+            fill
+            className="object-cover"
+          />
+        </div>
       </div>
     </div>
   </section>
@@ -51,7 +67,14 @@ const WhoWeAre = () => (
     <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
       
       {/* Visual Placeholder Column */}
-      <div className="mt- 10 relative aspect-[4/5] bg-[#d9d9d9] rounded-[3rem] shadow-2xl overflow-hidden" />
+      <div className="mt- 10 relative aspect-[4/5] bg-[#d9d9d9] rounded-[3rem] shadow-2xl overflow-hidden">
+        <Image
+          src="/images/ecosave-pay-home-page/ep-office(1).png"
+          alt="EcoSave Pay Logo"
+          fill
+          className="object-cover"
+        />
+      </div>
 
       {/* Content Column */}
       <div className="text-white">
@@ -89,6 +112,7 @@ export default function AboutPage() {
     <main className="font-sans antialiased overflow-x-hidden">
       <RedefiningPayments />
       <WhoWeAre />
+      <PaymentTeamSection />
       <FAQSection/>
     </main>
   );

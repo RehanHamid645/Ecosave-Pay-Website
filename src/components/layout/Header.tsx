@@ -2,11 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Lightbulb, Menu, X, ChevronDown, User, CreditCard, Computer,Globe } from "lucide-react";
+import { Lightbulb, Menu, X, ChevronDown, User, CreditCard, Computer,Globe, Mail, Phone } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import Button from "@/components/shared/Button";
 import { motion, AnimatePresence } from "framer-motion";
-// Removed incorrect import of Home page component
 import {
   Zap,
   Droplet,
@@ -25,18 +24,17 @@ const navigation = [
   { name: "About", href: "/about", hovericon: <Info /> },
   {
     name: "Services",
-    href: "#",
+    href: "/services",
     dropdown: true,
     children: [
       { name: "Face to Face", href: "/FaceToFace", hovericon: <User/> },
+      {name: "Online Payments",href:"/OnlinePayments",hovericon:<Globe/>},
       { name: "Virtual Terminals", href: "/VirtualPayments", hovericon: <CreditCard /> },
       { name: "EPOS Systems", href: "/EposSystems", hovericon: <Computer /> },
-      {name: "Online Payments",href:"/OnlinePayments",hovericon:<Globe/>}
+      
     ],
   },
-  { name: "Blogs", href: "/blog", hovericon: <Lightbulb /> },
-  { name: "Careers", href: "/careers", hovericon: <Briefcase /> },
-  { name: "Case Studies", href: "/case-studies", hovericon: <BriefcaseBusiness /> },
+     {name:"Contact",href:"/contact",hovericon:<Mail/>}
 ];
 
 export default function Header() {
@@ -61,8 +59,7 @@ export default function Header() {
       }
     };
     const handleScroll = () => {
-      // Get hero section height (assuming it's around 100vh or 800px)
-      const heroHeight = window.innerWidth >= 1024 ? 150 : 100; // Adjust these values based on your hero section
+      const heroHeight = window.innerWidth >= 1024 ? 150 : 100;
       const scrollPosition = window.scrollY;
       setIsScrolled(scrollPosition > heroHeight);
     };
@@ -93,63 +90,33 @@ export default function Header() {
   };
 
   return (
-    <header
-      className={`fixed w-full z-[99] transition-all duration-300 
-        ${
-          usePathname() === "/"
-            ? isScrolled
-              ? "bg-white/80 backdrop-blur-md shadow-sm"
-              : "bg-white"
-            : "bg-white/80 backdrop-blur-md shadow-sm"
-        }`}
-    >
+    <header className="absolute w-full z-[99] bg-transparent transition-all duration-300">
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between p-2 lg:px-8"
         aria-label="Global"
       >
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 2 }}
-          className="flex flex-1 lg:flex-1 -m-2 justify-start"
-        >
+        <div className="flex flex-1 lg:flex-1 -m-2 justify-start lg:mt-2">
           <Link href="/" className="p-0">
             <Image
-              src={
-                pathname === '/'? isScrolled ? "/img/ecosavepay.png" : "/img/ecosavepay.png":"/img/ecosavepay.png" } 
+              src="/img/ecosavepay.png"
               alt="Ecosave Gas and Power"
               width={800}
               height={200}
-              className="h-[88px] w-auto"
+              className="h-[70px] w-auto"
               priority
             />
           </Link>
-        </motion.div>
+        </div>
 
         {/* Mobile Menu */}
         <div className="flex lg:hidden items-center gap-2 relative">
-          <Link href="/contact">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-xs px-2"
-            >
-              Contact
-            </Button>
-          </Link>
-          <Link
-            href="/energy-quote/step1"
-            className="inline-flex items-center justify-center rounded-md font-semibold shadow-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#30a17e] focus:ring-[#3faa4e] px-2 text-xs py-1.5 bg-[#3faa4e] text-white"
-          >
-            Get a quote
-          </Link>
           <Button
             variant="ghost"
             size="sm"
             icon={mobileMenuOpen ? X : Menu}
             onClick={handleToggleMenu}
             aria-expanded={mobileMenuOpen}
-            className="text-gray-900"
+            className="text-white"
           >
             <span className="sr-only">Toggle menu</span>
           </Button>
@@ -210,18 +177,6 @@ export default function Header() {
                       </Link>
                     )
                   )}
-                  <div className="border-t border-gray-700 mt-1 pt-1">
-                    <Link href="/contact" onClick={handleCloseMenu}>
-                      <span className="block px-4 py-2 text-sm text-white hover:bg-gray-800 hover:text-[#3faa4e]">
-                        Get A Call
-                      </span>
-                    </Link>
-                    <Link href="/portal" onClick={handleCloseMenu}>
-                      <span className="block px-4 py-2 text-sm text-white hover:bg-gray-800 hover:text-[#3faa4e]">
-                        Portal
-                      </span>
-                    </Link>
-                  </div>
                 </div>
               </motion.div>
             )}
@@ -229,23 +184,12 @@ export default function Header() {
         </div>
 
         {/* Desktop Menu */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="hidden lg:flex lg:gap-x-10 relative"
-        >
+        <div className="hidden lg:flex lg:gap-x-16 relative">
           {navigation.map((item) =>
             item.dropdown ? (
               <div key={item.name} className="relative group">
                 <button
-                  className={`flex items-center gap-1 text-sm font-semibold leading-6 
-                    ${
-                            pathname === "/"
-                              ? isScrolled
-                                ? "text-[#151f34] hover:text-[#3faa4e]"
-                                : "text-[#151f34] hover:text-gray-300"
-                              : "text-[#151f34] hover:text-[#3faa4e]"
-                          } transition-colors py-1`}
+                  className="flex items-center gap-1 text-lg font-semibold leading-6 text-white hover:text-[#3faa4e] transition-colors py-1"
                 >
                   {item.name}
                   <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
@@ -271,14 +215,7 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`text-sm font-semibold leading-6 
-                          ${
-                            pathname === "/"
-                              ? isScrolled
-                                ? "text-[#151f34] hover:text-[#3faa4e]"
-                                : "text-[#151f34] hover:text-gray-300"
-                              : "text-[#151f34] hover:text-[#3faa4e]"
-                          } transition-colors group relative py-1`}
+                className="text-lg font-semibold leading-6 text-white hover:text-[#3faa4e] transition-colors group relative py-1"
               >
                 <span className="group-hover:opacity-0 transition-opacity">
                   {item.name}
@@ -289,35 +226,28 @@ export default function Header() {
               </Link>
             )
           )}
-        </motion.div>
+        </div>
 
        {/* Contact button */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4 lg:items-center"
-        >
-          <p
-            className="text-sm font-semibold leading-6 text-[#151f34]"
-          >
-            0161 814 9299
-          </p>
-          <Link href="/contact">
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4 lg:items-center">
+          <a href="tel:01618149299" className="flex items-center gap-2 cursor-pointer group transition-colors">
+            <p className={`text-base font-semibold leading-6 text-white transition-colors ${pathname !== '/about' && pathname !== '/contact' ? 'group-hover:text-black' : 'group-hover:text-[#3faa4e]'}`}>
+              0161 814 9299
+            </p>
+            <Phone className={`w-6 h-6 text-white transition-colors ${pathname !== '/about' && pathname !== '/contact' ? 'group-hover:text-black' : 'group-hover:text-[#3faa4e]'}`} />
+          </a>
+
+          {/* <Link href="/contact">
             <Button
-              variant= "ghost"
+              variant="ghost"
               size="md"
-              className="py-1.5 shadow-xl"
+              className="py-1.5 shadow-xl text-white hover:text-[#3faa4e]"
             >
               Contact
             </Button>
-          </Link>
-          <Link
-            href="/energy-quote/step1"
-            className=" shadow-xl inline-flex items-center justify-center rounded-md font-semibold shadow-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#30a17e] focus:ring-[#3faa4e] px-3 text-sm py-1.5 bg-[#3faa4e] text-white"
-          >
-            Get a quote
-          </Link>
-        </motion.div>
+          </Link> */}
+         
+        </div>
       </nav>
     </header>
   );

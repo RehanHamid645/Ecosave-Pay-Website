@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import {
   CheckBadgeIcon,
   CalendarDaysIcon,
@@ -40,17 +41,17 @@ export default function PaymentsInfo() {
 
         {/* Right Side - Headline, Text */}
         <div className="space-y-6 text-center lg:text-left">
-          <h2 className="text-7xl sm:text-6xl font-extrabold text-[#4ac88f] -mt-28">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-[#4ac88f] mt-8 sm:mt-0 lg:-mt-28">
             Payment Solutions Designed Around Your Business.
           </h2>
-          <p className="text-lg text-gray-700">
+          <p className="text-base sm:text-lg text-gray-700">
             At Ecosave Pay, we go beyond simply processing transactions. We understand what truly matters to UK businesses — transparent pricing, quick access to your funds, reliable technology, and dedicated support that puts you first. Accept payments effortlessly with solutions built to keep your business moving.
           </p>
         </div>
       </div>
 
       {/* Positioned Image at Bottom Right */}
-      <div className="absolute bottom-16 right-0 w-[450px] max-w-[80%] lg:w-[550px] xl:w-[650px]">
+      <div className="hidden lg:block absolute bottom-16 right-0 w-[450px] max-w-[80%] lg:w-[550px] xl:w-[650px]">
         <Image
           src="/images/ecosave-pay-home-page/card-read-with-trust-pilot.png"
           alt="Ecosave Pay Device and Trustpilot Rating"
@@ -68,9 +69,11 @@ export default function PaymentsInfo() {
         <p className="text-gray-700 max-w-3xl mx-auto mb-6">
           Every business operates differently — and so should its payment solution. Our specialists work with you to develop a customised plan that optimises costs, improves efficiency, and delivers a seamless payment experience for your customers.
         </p>
-        <button className="bg-black text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-800 transition">
+        
+        <Link href="/contact" className="inline-block bg-black text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-800 transition">
           START SAVING TODAY
-        </button>
+        </Link>
+        
       </div>
     </section>
   )
