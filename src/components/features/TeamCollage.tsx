@@ -119,6 +119,8 @@ export default function TeamCollage() {
   useEffect(() => {
     setLoaded(true)
     
+    if (typeof window === 'undefined') return;
+    
     // Handle window resize for responsiveness
     function handleResize() {
       setWindowSize({
@@ -171,6 +173,8 @@ export default function TeamCollage() {
   
   // Handle key presses for navigation
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!lightboxOpen) return
       

@@ -58,11 +58,15 @@ export default function Header() {
         setServicesOpen(false);
       }
     };
+    
     const handleScroll = () => {
+      if (typeof window === 'undefined') return;
       const heroHeight = window.innerWidth >= 1024 ? 150 : 100;
       const scrollPosition = window.scrollY;
       setIsScrolled(scrollPosition > heroHeight);
     };
+
+    if (typeof window === 'undefined') return;
 
     window.addEventListener("keydown", handleEsc);
     if (mobileMenuOpen) {

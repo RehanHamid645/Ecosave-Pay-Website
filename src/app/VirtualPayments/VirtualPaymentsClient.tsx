@@ -36,18 +36,18 @@ const WhitePillLogo = ({
   <div
     className="bg-white rounded-full flex items-center justify-center shadow-sm px-2 md:px-8"
     style={{ 
-      width: window.innerWidth < 768 ? `${width * 0.35}px` : `${width}px`, 
-      height: window.innerWidth < 768 ? `${height * 0.7}px` : `${height}px`, 
-      minWidth: window.innerWidth < 768 ? `${width * 0.35}px` : `${width}px` 
+      width: `${width}px`,
+      height: `${height}px`,
+      minWidth: `${width}px`
     }}
   >
     {src ? (
       <Image 
         src={src} 
         alt={alt} 
-        width={window.innerWidth < 768 ? imgWidth * 0.4 : imgWidth} 
-        height={window.innerWidth < 768 ? imgHeight * 0.4 : imgHeight} 
-        className="object-contain" 
+        width={imgWidth}
+        height={imgHeight}
+        className="object-contain w-auto h-auto" 
       />
     ) : (
       <span className="text-gray-400 text-xs font-semibold">Logo</span>

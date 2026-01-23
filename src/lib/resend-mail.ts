@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 
-// Initialize Resend with API key
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend with API key only if it's available
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 export async function sendMail({
   to,
@@ -13,6 +13,12 @@ export async function sendMail({
   html: string;
 }) {
   try {
+    // Check if Resend is initialized
+    if (!resend) {
+      console.warn("Resend API key not configured, email sending disabled");
+      return { success: false, error: 'Email service not configured' };
+    }
+    
     console.log("Sending email via Resend API:", { 
       to, 
       from: process.env.RESEND_FROM || 'onboarding@resend.dev',
