@@ -1,7 +1,11 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-// Render this page purely on the client to avoid SSR window usage
+
+// Force dynamic rendering to stop Next.js from attempting prerender (window is client-only)
+export const dynamicParams = true
+export const revalidate = 0
+
 const FaceToFaceClient = dynamic(() => import('./Facetoface'), {
   ssr: false,
   loading: () => <div className="bg-black min-h-screen" />
