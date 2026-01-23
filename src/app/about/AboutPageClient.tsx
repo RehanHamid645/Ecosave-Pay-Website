@@ -28,7 +28,7 @@ const RedefiningPayments = () => (
         <div className="col-span-2 aspect-[16/8] bg-[#d9d9d9] rounded-[2.5rem] relative overflow-hidden">
           <Image
             src="/images/ecosave-pay-home-page/ep-office(4).png"
-            alt="EcoSave Pay Payment Solutions"
+            alt="Ecosave Pay Payment Solutions"
             fill
             className="object-cover"
           />
@@ -38,7 +38,7 @@ const RedefiningPayments = () => (
         <div className="aspect-square bg-[#d9d9d9] rounded-[2.5rem] relative overflow-hidden">
           <Image
             src="/images/ecosave-pay-home-page/ep-office(2).png"
-            alt="EcoSave Pay Office"
+            alt="Ecosave Pay Office"
             fill
             className="object-cover"
           />
@@ -48,7 +48,7 @@ const RedefiningPayments = () => (
         <div className="aspect-square bg-[#d9d9d9] rounded-[2.5rem] relative overflow-hidden">
           <Image
             src="/images/ecosave-pay-home-page/ep-office(3).png"
-            alt="EcoSave Pay Payment Terminal"
+            alt="Ecosave Pay Payment Terminal"
             fill
             className="object-cover"
           />
@@ -87,7 +87,7 @@ const WhoWeAre = () => (
         
         <div className="space-y-8 text-lg font-medium leading-relaxed opacity-95">
           <p>
-            EcoSave Pay is a next-generation payment solutions provider, offering smart, 
+            Ecosave Pay is a next-generation payment solutions provider, offering smart, 
             secure tools for card machines, EPOS systems, online payments, and fintech 
             innovation across the UK. We're more than a payment processor, we're 
             passionate about reshaping how businesses get paid and how customers pay, 
@@ -95,7 +95,7 @@ const WhoWeAre = () => (
           </p>
           <p>
             Founded with a mission to make payments easier and more ethical, 
-            EcoSave Pay is built for modern businesses across hospitality, retail, 
+            Ecosave Pay is built for modern businesses across hospitality, retail, 
             healthcare, and professional services, delivering flexible, future-ready 
             solutions that grow with you.
           </p>
