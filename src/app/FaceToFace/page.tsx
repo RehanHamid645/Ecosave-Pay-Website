@@ -1,10 +1,12 @@
 'use client'
 
-export const dynamic = 'force-dynamic';
+import dynamic from 'next/dynamic'
+// Render this page purely on the client to avoid SSR window usage
+const FaceToFaceClient = dynamic(() => import('./Facetoface'), {
+  ssr: false,
+  loading: () => <div className="bg-black min-h-screen" />
+})
 
-import FaceToFacePage from "./Facetoface";
-
-
-export default function FacePage(){
-    return <FaceToFacePage />;
+export default function FacePage() {
+  return <FaceToFaceClient />
 }
