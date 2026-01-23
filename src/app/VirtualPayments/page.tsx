@@ -1,9 +1,12 @@
 'use client'
 
-export const dynamic = 'force-dynamic';
+import dynamic from 'next/dynamic'
 
-import VirtualTerminalPage from './VirtualPaymentsClient';
+const VirtualTerminalClient = dynamic(() => import('./VirtualPaymentsClient'), { 
+  ssr: false,
+  loading: () => <div className="bg-black min-h-screen" /> 
+})
 
 export default function VirtualPayments() {
-    return <VirtualTerminalPage />;
+    return <VirtualTerminalClient />;
 }

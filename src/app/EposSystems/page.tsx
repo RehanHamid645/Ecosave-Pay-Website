@@ -1,9 +1,12 @@
 'use client'
 
-export const dynamic = 'force-dynamic';
+import dynamic from 'next/dynamic'
 
-import EPOSSolutionsPage from './EposSystemsClient'
+
+const EPOSSolutionsClient = dynamic(() => import('./EposSystemsClient'), { 
+  ssr: false 
+})
 
 export default function EposSystems(){
-    return <EPOSSolutionsPage />;
+    return <EPOSSolutionsClient />;
 }
