@@ -115,13 +115,15 @@ export default function LinkedInFeed({ companyId = '123456789' }: LinkedInFeedPr
         </div>
         
         <div className="bg-gray-50 p-4 border-t border-gray-200">
-          <Button
-            className="w-full bg-[#0A66C2] hover:bg-[#004182] transition-colors text-white flex items-center justify-center gap-2"
-            onClick={() => window.open(`https://www.linkedin.com/company/${companyId}`, '_blank')}
+          <a
+            href={`https://www.linkedin.com/company/${companyId}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full bg-[#0A66C2] hover:bg-[#004182] transition-colors text-white flex items-center justify-center gap-2 px-4 py-2 rounded"
           >
             Follow Us on LinkedIn
             <ExternalLink className="h-4 w-4" />
-          </Button>
+          </a>
         </div>
       </Card>
       
