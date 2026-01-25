@@ -1,8 +1,9 @@
-'use client'
+import dynamicImport from 'next/dynamic'
 
-import dynamic from 'next/dynamic'
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
-const OnlinePaymentsClient = dynamic(() => import('./OnlinePayments'), { 
+const OnlinePaymentsClient = dynamicImport(() => import('./OnlinePayments'), { 
   ssr: false,
   loading: () => <div className="bg-black min-h-screen" /> 
 })

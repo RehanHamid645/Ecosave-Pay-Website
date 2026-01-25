@@ -1,12 +1,13 @@
-// 'use client'
+import dynamic from 'next/dynamic'
 
-// import dynamic from 'next/dynamic'
+export const dynamicParams = true
+export const revalidate = 0
 
+const EPOSSolutionsClient = dynamic(() => import('./EposSystemsClient'), {
+  ssr: false,
+  loading: () => <div className="bg-black min-h-screen" />
+})
 
-// const EPOSSolutionsClient = dynamic(() => import('./EposSystemsClient'), { 
-//   ssr: false 
-// })
-import EPOSSolutionsPage from "./EposSystemsClient";
 export default function EposSystems(){
-    return <EPOSSolutionsPage />;
+    return <EPOSSolutionsClient />;
 }

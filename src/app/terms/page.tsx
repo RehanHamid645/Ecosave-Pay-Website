@@ -6,6 +6,9 @@ import Card from '@/components/shared/Card'
 import { useEffect } from 'react'
 import Link from 'next/link'
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 const termsPoints = [
   {
     title: 'Service Agreement',

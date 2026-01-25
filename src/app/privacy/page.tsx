@@ -5,6 +5,9 @@ import Card from '@/components/shared/Card'
 import { Shield, Lock, Eye, FileText, ArrowUp } from 'lucide-react'
 import { useEffect } from 'react'
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 const privacyPoints = [
   {
     title: 'Data Collection',
