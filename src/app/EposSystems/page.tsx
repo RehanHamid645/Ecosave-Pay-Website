@@ -1,12 +1,12 @@
-'use client'
+// 'use client'
 
-import dynamic from 'next/dynamic'
+// import dynamic from 'next/dynamic'
 
 
-const EPOSSolutionsClient = dynamic(() => import('./EposSystemsClient'), { 
-  ssr: false 
-})
-
+// const EPOSSolutionsClient = dynamic(() => import('./EposSystemsClient'), { 
+//   ssr: false 
+// })
+import EPOSSolutionsPage from "./EposSystemsClient";
 export default function EposSystems(){
-    return <EPOSSolutionsClient />;
+    return <EPOSSolutionsPage />;
 }
