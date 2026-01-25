@@ -2,8 +2,10 @@
 
 import dynamic from 'next/dynamic'
 
-export const dynamic = 'force-dynamic'
-export const revalidate = 0
+const VirtualTerminalClient = dynamic(() => import('./VirtualPaymentsClient'), { 
+  ssr: false,
+  loading: () => <div className="bg-black min-h-screen" /> 
+})
 
 export default function VirtualPayments() {
     return <VirtualTerminalClient />;
