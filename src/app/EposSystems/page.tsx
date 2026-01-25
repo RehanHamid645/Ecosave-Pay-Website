@@ -1,6 +1,8 @@
+'use client'
+
 import dynamic from 'next/dynamic'
 
-export const dynamicParams = true
+export const dynamicConfig = 'force-dynamic'
 export const revalidate = 0
 
 const EPOSSolutionsClient = dynamic(() => import('./EposSystemsClient'), {

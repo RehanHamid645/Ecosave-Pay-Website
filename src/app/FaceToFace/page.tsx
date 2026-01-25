@@ -1,3 +1,5 @@
+'use client'
+
 import dynamicImport from 'next/dynamic'
 
 // Force dynamic rendering to stop Next.js from attempting prerender (window is client-only)
