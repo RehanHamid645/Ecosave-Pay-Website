@@ -1,12 +1,6 @@
 'use client'
 
-import dynamicImport from 'next/dynamic'
-
-const FaceToFaceClient = dynamicImport(() => import('./Facetoface'), {
-  ssr: false,
-  loading: () => <div className="bg-black min-h-screen" />
-})
-
+import FaceToFacePage from "./Facetoface";
 export default function FacePage() {
-  return <FaceToFaceClient />
+  return <FaceToFacePage />
 }

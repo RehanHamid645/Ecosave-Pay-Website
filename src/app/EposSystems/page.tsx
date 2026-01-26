@@ -1,12 +1,7 @@
 'use client'
 
-import dynamic from 'next/dynamic'
-
-const EPOSSolutionsClient = dynamic(() => import('./EposSystemsClient'), {
-  ssr: false,
-  loading: () => <div className="bg-black min-h-screen" />
-})
+import EPOSSolutionsPage from "./EposSystemsClient";
 
 export default function EposSystems(){
-    return <EPOSSolutionsClient />;
+    return <EPOSSolutionsPage />;
 }

@@ -1,12 +1,7 @@
 'use client'
 
-import dynamicImport from 'next/dynamic'
-
-const OnlinePaymentsClient = dynamicImport(() => import('./OnlinePayments'), { 
-  ssr: false,
-  loading: () => <div className="bg-black min-h-screen" /> 
-})
+import OnlinePaymentsPage from "./OnlinePayments";
 
 export default function OnlinePage() {
-  return <OnlinePaymentsClient />;
+  return <OnlinePaymentsPage/>;
 }
