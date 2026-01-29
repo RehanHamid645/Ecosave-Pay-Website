@@ -106,14 +106,13 @@ const HeroSection = () => {
         </div>
         
         <div className="mt-8 md:mt-16 pt-6 md:pt-8 border-t border-white/10">
-          <p className="text-xs font-bold text-gray-500 tracking-widest uppercase mb-4 md:mb-6">Accept all type of payments</p>
+            <p className="hidden md:block text-xs font-bold text-gray-500 tracking-widest uppercase mb-4 md:mb-6">Accept all type of payments</p>
           <div className="grid grid-cols-3 md:flex gap-1.5 md:gap-4 items-center pb-4 md:ml-0">
-            <WhitePillLogo src="/images/ecosave-pay-home-page/Apple_Pay_logo.svg.png" alt="Apple Pay Logo" />
-            <WhitePillLogo src="/images/ecosave-pay-home-page/Alipay_logo.svg.png" alt="Alipay Logo" />
-            <WhitePillLogo src="/images/ecosave-pay-home-page/Visa_Inc._logo.svg.png" alt ="Visa Logo" />
-            <WhitePillLogo src="/images/ecosave-pay-home-page/Google_Pay_Logo.svg.png" alt="Google Pay Logo" />
-            <WhitePillLogo src="/images/ecosave-pay-home-page/wechat.png" alt="WeChat Pay Logo" width={240} height={40} imgWidth={45} imgHeight={40} />
-            <WhitePillLogo src="/images/ecosave-pay-home-page/samsung-pay-logo.png" alt="Samsung Pay Logo" imgHeight={120} imgWidth={110} />
+            <WhitePillLogo src="/images/ecosave-pay-home-page/Apple_Pay_logo.svg.png" alt="Apple Pay Logo" imgWidth={50} imgHeight={20} />
+            <WhitePillLogo src="/images/ecosave-pay-home-page/Alipay_logo.svg.png" alt="Alipay Logo" imgWidth={50} imgHeight={20} />
+            <WhitePillLogo src="/images/ecosave-pay-home-page/Visa_Inc._logo.svg.png" alt ="Visa Logo" imgWidth={50} imgHeight={20} />
+            <WhitePillLogo src="/images/ecosave-pay-home-page/Google_Pay_Logo.svg.png" alt="Google Pay Logo" imgWidth={50} imgHeight={20} />
+            <WhitePillLogo src="/images/ecosave-pay-home-page/wechat.png" alt="WeChat Pay Logo" width={240} height={40} imgWidth={40} imgHeight={20} />
           </div>
         </div>
       </div>

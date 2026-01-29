@@ -29,11 +29,11 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-  title: "Business Energy Price Comparison | Compare Gas & Electric – Ecosave Gas & Power",
+  title: "Ecosave Pay | Smart Payments For UK Businesses",
 
-  description:
-    "Compare business gas & electricity with Ecosave Gas & Power — get instant quotes from leading UK suppliers, switch to the cheapest tariff and save up to 45% on energy.",
-  metadataBase: new URL('https://ecosavegasandpower.com'),
+  description:"Smarter Payment Solutions to Power Your Business. Whether you trade in-store or online, Ecosave Pay delivers everything you need to take payments seamlessly.",
+keywords: "Card machine for small business, Portable card machine, Mobile card reader for business, Contactless card machine,Cheap card machine rates,Best merchant service provider, Credit card processing for retail",
+  metadataBase: new URL('https://ecosavepay.com'),
   alternates: {
     canonical: '/',
   },
@@ -42,10 +42,10 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   openGraph: {
-    title: 'Ecosave - Business Energy & Services Comparison',
-    description: 'Compare and save on business energy, insurance, connectivity, and finance solutions.',
-    url: 'https://ecosavegasandpower.com',
-    siteName: 'Ecosave Gas & Power',
+    title: 'Ecosave Pay - Smarter Payment Solutions for UK Businesses',
+    description: 'Smarter Payment Solutions to Power Your Business. Whether you trade in-store or online, Ecosave Pay delivers everything you need to take payments seamlessly.',
+    url: 'https://ecosavepay.com',
+    siteName: 'Ecosave Pay',
     locale: 'en_GB',
     type: 'website',
   },

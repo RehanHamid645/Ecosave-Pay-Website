@@ -5,12 +5,11 @@ import { NextResponse } from 'next/server'
 export const maxDuration = 60; // Maximum duration in seconds for Vercel serverless function
 
 export async function POST(req: Request) {
-  console.log("Energy Quote API called");
+  console.log("Inquiry API called");
 
   try {
     const { name,businessName, phoneNumber, selectedServices, postcode } = await req.json()
-    console.log("Energy Quote API called", { name,businessName, phoneNumber, selectedServices, postcode });
-
+    console.log("Inquiry API called", { name,businessName, phoneNumber, selectedServices, postcode });
     // Enhanced validation with specific error messages
     const errors: string[] = [];
     
@@ -76,17 +75,17 @@ export async function POST(req: Request) {
       </html>
     `
 
-    console.log("Sending energy quote email to:", process.env.RESEND_TO);
+    console.log("Sending inquiry email to:", process.env.RESEND_TO);
     
     try {
       const result = await sendMail({
-        to: process.env.RESEND_TO || 'info@ecosavepay.com',
+        to: process.env.RESEND_TO || 'roy.wade@ecosavepay.com',
         subject: `New Energy/Card Services Quote Request - ${name} - ${postcode}`,
         html: htmlContent,
       })
 
       if (!result.success) {
-        console.error("Energy quote email sending failed:", result);
+        console.error("Inquiry email sending failed:", result);
         
         // Create a more user-friendly error message
         let errorMessage = 'Failed to send quote request. Please try again later or contact us directly.';
@@ -105,20 +104,20 @@ export async function POST(req: Request) {
         )
       }
 
-      console.log("Energy quote email sent successfully:", result.messageId);
+      console.log("Inquiry email sent successfully:", result.messageId);
       return NextResponse.json({ 
         success: true,
         message: 'Your quote request has been submitted successfully' 
       })
     } catch (emailError) {
-      console.error('Email sending error:', emailError);
+      console.error('Inquiry email sending error:', emailError);
       return NextResponse.json(
         { error: 'Failed to send email. Please try again later.' },
         { status: 500 }
       )
     }
   } catch (error) {
-    console.error('Energy Quote API error:', error)
+    console.error('Inquiry API error:', error)
     return NextResponse.json(
       { error: 'Invalid request format. Please check your submission and try again.' },
       { status: 400 }

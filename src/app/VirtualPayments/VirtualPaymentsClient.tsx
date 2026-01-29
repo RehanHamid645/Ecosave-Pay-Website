@@ -103,12 +103,11 @@ const VirtualHero = () => {
         <div className="mt-8 md:mt-16 pt-6 md:pt-8 border-t border-white/10">
           <p className="text-xs font-bold text-gray-500 tracking-widest uppercase mb-4 md:mb-6">Accept all types of payment</p>
           <div className="grid grid-cols-3 md:flex gap-1.5 md:gap-4 items-center pb-4 md:ml-0">
-            <WhitePillLogo src="/images/ecosave-pay-home-page/Apple_Pay_logo.svg.png" alt="Apple Pay" height={40} />
-            <WhitePillLogo src="/images/ecosave-pay-home-page/Google_Pay_Logo.svg.png" alt="Google Pay" height={40} />
-            <WhitePillLogo src="/images/ecosave-pay-home-page/Visa_Inc._logo.svg.png" alt ="Visa" height={40} />
-            <WhitePillLogo src="/images/ecosave-pay-home-page/Diners_Club_Logo3.svg.png" alt ="Diners Club" height={40} />
-            <WhitePillLogo src="/images/ecosave-pay-home-page/wechat.png" alt="WeChat Pay Logo" width={240} height={40} imgWidth={40} imgHeight={30} />
-            <WhitePillLogo src="/images/ecosave-pay-home-page/samsung-pay-logo.png" alt="Samsung Pay Logo" height={40} imgHeight={110} imgWidth={110} />
+            <WhitePillLogo src="/images/ecosave-pay-home-page/Apple_Pay_logo.svg.png" alt="Apple Pay" height={40} imgWidth={50} imgHeight={20} />
+            <WhitePillLogo src="/images/ecosave-pay-home-page/Google_Pay_Logo.svg.png" alt="Google Pay" height={40} imgWidth={50} imgHeight={20} />
+            <WhitePillLogo src="/images/ecosave-pay-home-page/Visa_Inc._logo.svg.png" alt ="Visa" height={40} imgWidth={50} imgHeight={20} />
+            <WhitePillLogo src="/images/ecosave-pay-home-page/Diners_Club_Logo3.svg.png" alt ="Diners Club" height={40} imgWidth={50} imgHeight={20} />
+            <WhitePillLogo src="/images/ecosave-pay-home-page/wechat.png" alt="WeChat Pay Logo" width={240} height={40} imgWidth={40} imgHeight={20} />
           </div>
         </div>
       </div>
@@ -140,74 +139,9 @@ const RemotePaymentsInfo = () => (
           Remote Payments <br /> Made Easy
         </h2>
         <div className="relative h-[500px] w-full bg-gray-100 rounded-[2.5rem] overflow-hidden mb-8">
-          <Image
-            src="/images/ecosave-pay-home-page/woman-on-laptop2.png"
-            alt="Professional woman using laptop"
-            fill
-            style={{objectFit: 'cover'}}
-            className="object-cover"
-            priority
-          />
-        </div>
-        <p className="text-gray-600 text-lg font-medium mb-10 leading-relaxed">
-          A virtual payment terminal is a secure online card reader that works from any internet-connected device. 
-          Ideal for phone orders and remote payments, it lets you accept card transactions instantly without 
-          needing a physical machine.
-        </p>
-        <div className="space-y-4">
-          {[
-            "Accept card payments by phone with secure, real-time processing.",
-            "No physical terminal or hardware required.",
-            "Instant confirmation and email receipts for every payment.",
-            "Built for any business, from retail to professional services."
-          ].map((item, idx) => (
-            <div key={idx} className="flex items-center gap-3">
-              <div className="bg-[#5ece6d]/10 p-1 rounded-full">
-                <Check size={18} className="text-[#5ece6d]" />
-              </div>
-              <span className="font-bold text-gray-800">{item}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-const BuiltForNeeds = () => (
-  <section className="bg-slate-50 py-24 px-6">
-    <div className="max-w-7xl mx-auto">
-      <div className="text-center mb-16">
-        <p className="text-[#5ece6d] font-bold text-sm tracking-widest uppercase mb-4">Why Choose Ecosave Pay Virtual Terminal</p>
-        <h2 className="text-4xl md:text-6xl font-black text-[#5ece6d] tracking-tighter leading-tight mb-8">
-          Virtual Payments Built <br className="hidden md:block" /> Around Your Needs
-        </h2>
-        <p className="text-gray-500 text-lg font-medium max-w-3xl mx-auto">
-          Upgrade your payment process with smart, integrated features built for today's business. 
-          Boost efficiency and deliver standout customer experiences—all in one seamless solution.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-        {/* Left Features */}
-        <div className="space-y-8">
-          <div className="bg-white p-10 rounded-[2.5rem] shadow-sm">
-            <Zap className="text-black mb-6" size={32} />
-            <h3 className="text-2xl font-extrabold mb-4">Fast, Secure Transactions</h3>
-            <p className="text-sm text-gray-600 font-medium">Accept payments in seconds with our easy-to-use interface. Just enter card details and get instant confirmation.</p>
-          </div>
-          <div className="bg-white p-10 rounded-[2.5rem] shadow-sm">
-            <MousePointerClick className="text-black mb-6" size={32} />
-            <h3 className="text-2xl font-extrabold mb-4">Single and Repeat Payments</h3>
-            <p className="text-sm text-gray-600 font-medium">Support one-time payments and automated recurring billing for subscriptions and ongoing services.</p>
-          </div>
-        </div>
-
-        
-    <div className="relative h-[600px] bg-gray-200 rounded-[2.5rem] overflow-hidden">
       <Image
-        src="/images/ecosave-pay-home-page/man-on-phone.png"
-        alt="Man on phone using laptop"
+        src="/images/ecosave-pay-home-page/woman-on-laptop2.png"
+        alt="Professional woman using laptop"
         fill
         style={{objectFit: 'cover'}}
         className="object-cover"
@@ -336,7 +270,6 @@ export default function VirtualTerminalPage() {
     <main className="font-sans antialiased overflow-x-hidden">
       <VirtualHero />
       <RemotePaymentsInfo />
-      <BuiltForNeeds />
       <SimplifySection />
       <PaymentTeamSection />
       <VirtualFAQ />
